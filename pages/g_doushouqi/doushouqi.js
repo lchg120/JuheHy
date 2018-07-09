@@ -10,7 +10,7 @@ Page({
 
     /*棋子数据*/
     qizi: [
-      /*id:判断动物大小值, bgUrl:动物背景, name:动物名字, vs(判断用户和对手):true代表自己/false代表对手, sure(未选择动物的值):初始值false, isClick(确定点击):初始值false*/
+      /*id:判断动物大小值, bgUrl:动物背景, name:动物名字, vs(判断用户和对手):true代表自己/false代表对手, sure(未选择动物的值):初始值false, isClick(确定点击):初始值0/值为1的时候显示当前高亮状态*/
       { id: 0, bgUrl: 'id0.png', name: '鼠', vs: true, sure: false,  isClick: 0 },
       { id: 1, bgUrl: 'id1.png', name: '猫', vs: true, sure: false, isClick: 0 },
       { id: 2, bgUrl: 'id2.png', name: '狗', vs: true, sure: false, isClick: 0 },

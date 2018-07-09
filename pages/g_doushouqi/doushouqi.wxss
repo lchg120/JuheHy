@@ -250,7 +250,7 @@ button {
   left: 0;
   z-index: 9;
   overflow: hidden;
-  background: #673ab7;
+  background: #73d776;
   color: #fff;
 }
 .headPic {
