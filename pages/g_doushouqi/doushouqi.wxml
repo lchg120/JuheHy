@@ -36,7 +36,7 @@
             <!--确定状态之后-->
             <block wx:if="{{item.sure}}">
               <view class='game-item-box bg' wx:if="{{item.sure}}" style="background-image: url('{{imagesBaseUrl}}game/g_doushouqi/{{item.bgUrl}}')"></view> 
-              <view class='game-item-name round' wx:if="{{item.sure}}" >{{item.name}}</view>
+              <view class='game-item-name round center-X center-Y' wx:if="{{item.sure}}" >{{item.name}}</view>
             </block>
             <!--箭头显示-->
             <view class='game-item-direction w100 h100' wx:if="{{item.isClick > 0}}">
