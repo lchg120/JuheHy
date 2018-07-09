@@ -63,51 +63,99 @@ module.exports = function (t) {
     showMsg: function (direction, itemNum, itemTotal) {
 
     },
-    timer: function () {
-      var timer = setInterval(function () {
-        var time = parseInt(t.data.fight.timer);
-        if (time > 1) {
-          time--;
-        } else {
-          clearInterval(timer);
-          //显示结果
-          t.setData({
-            'fight.timerHide': true,
-            'fight.clickNumlistHide': true,
-            'fight.clickNumlist2Hide': true,
-            'fight.handshareHide': false,
-            'fight.kaiGenHide': true,
-            'result.hide': false
-          });
-        }
-        t.setData({ 'fight.timer': time });
-      }, 1000);
-    },
+    // timer: function () {
+    //   var timer = setInterval(function () {
+    //     var time = parseInt(t.data.fight.timer);
+    //     if (time > 1) {
+    //       time--;
+    //     } else {
+    //       clearInterval(timer);
+    //       //显示结果
+    //       t.setData({
+    //         'fight.timerHide': true,
+    //         'fight.clickNumlistHide': true,
+    //         'fight.clickNumlist2Hide': true,
+    //         'fight.handshareHide': false,
+    //         'fight.kaiGenHide': true,
+    //         'result.hide': false
+    //       });
+    //     }
+        
+    //   }, 1000);
+    // },
+
+		/**
+		 * 摇色钟
+		 */
+		keep_shake:null,
+		end_shake:null,
     shake: function () {
-      const e = tween.fastGet("shakeView"), shakeAni = wx.createAnimation();
+			var _this = this;
+			_this.keep_shake = true;
+			_this.end_shake = false;
+      const shakeAni = wx.createAnimation();
       const share = function (du) {
         shakeAni.rotate(du).step({ timingFunction: "ease", duration: 200 });
         t.setData({ 'ready.shakeAni': shakeAni.export() });
       }
-      share(60)
-      e.wait(100), e.call(function () { share(-60) }),
-        e.wait(100), e.call(function () { share(60) }),
-        e.wait(100), e.call(function () { share(-50) }),
-        e.wait(100), e.call(function () { share(50) }),
-        e.wait(100), e.call(function () {
-          shakeAni.rotate(0).step({ timingFunction: "ease-out", duration: 200 });
-          t.setData({ 'ready.shakeAni': shakeAni.export() });
-        }),
-        e.wait(200), e.call(function () {
-          shakeAni.top('-500rpx').opacity(0).step({ timingFunction: "ease-out", duration: 400 });
-          t.setData({ 'ready.shakeAni': shakeAni.export() });
-        }),
-        e.wait(510), e.call(function () {
-          t.setData({ 'ready.hide': true, 'fight.hide': false });
-        });
-
+			const oneShake = function(){
+				var e = tween.fastGet(Math.random());
+				e.wait(100), e.call(function () { share(-60) }),
+				e.wait(100), e.call(function () { share(60) }),
+				e.wait(100), e.call(function () { share(-50) }),
+				e.wait(100), e.call(function () {
+					share(50);
+					if (_this.keep_shake)
+					{
+						oneShake();
+					}
+					else
+					{
+						_this.end_shake = true;
+					}
+				});
+			}
+			share(60)
+			oneShake();
+      
       //计时器
-      this.timer();
-    }
+      //this.timer();
+    },
+
+		/**
+		 * 摇色中结束
+		 */
+		share_end : function(){
+			var _this = this;
+			_this.keep_shake = false;
+			const shakeAni = wx.createAnimation();
+			const end = function(){
+				if (_this.end_shake) {
+					var end_e = tween.fastGet(Math.random());
+					end_e.wait(100), end_e.call(function () {
+						shakeAni.rotate(0).step({ timingFunction: "ease-out", duration: 200 });
+						t.setData({ 'ready.shakeAni': shakeAni.export() });
+					}),
+					end_e.wait(200), end_e.call(function () {
+						shakeAni.top('-500rpx').opacity(0).step({ timingFunction: "ease-out", duration: 400 });
+						t.setData({ 'ready.shakeAni': shakeAni.export() });
+					}),
+					end_e.wait(510), end_e.call(function () {
+						t.setData({ 'ready.hide': true, 'fight.hide': false });
+					});
+				}
+				else
+				{
+					var e = tween.fastGet(Math.random());
+					e.wait(400)
+					e.call(function(){
+						end();
+					});
+				}
+			}
+			end();
+			
+		},
+
   }
 }

@@ -96,10 +96,8 @@ Page({
 		that.gameAni = new gameAni(that);
 		that.gameAni.init();
 
-
-
 		util.post('global/getuserinfo', { uid: util.getStorageSync('uid'), secret: util.getStorageSync('secret'), uid2: options.uid2 }, function (resJson) {
-			console.log(resJson);
+			//console.log(resJson);
 			that.setData({
 				'leftview.userinfo.avatar': resJson.data.userdata.avatarUrl,
 				'leftview.userinfo.name': resJson.data.userdata.nickName,
@@ -126,12 +124,12 @@ Page({
 	
 	//摇色钟
   click_start: function(){
-		app.socket.sendSocketMessage('{"action":"glb_clienttohttp","gid":4,"connmsg":{"action":"game_ready","uidvs":' + optionsData.uid2 + ',"tid":' + optionsData.tid + ',"time":' + optionsData.time + '}}');
+		//app.socket.sendSocketMessage('{"action":"glb_clienttohttp","gid":4,"connmsg":{"action":"game_ready","uidvs":' + optionsData.uid2 + ',"tid":' + optionsData.tid + ',"time":' + optionsData.time + '}}');
 	  this.gameAni.shake();
   },
 
 	handleSocketMessage: function (resJson) {
-		console.log('收到socket消息：' + JSON.stringify(resJson));
+		//console.log('收到socket消息：' + JSON.stringify(resJson));
 		var _this = this;
 		var uid = Number(util.getStorageSync('uid'));
 		switch (resJson.action) {
@@ -141,6 +139,28 @@ Page({
 				that.data.gameid = resJson.gameid;
 				//resJson.cur_play_uid 当前回合uid，resJson.shaizi_data 两边的色子数据，形如[{'uid'=>1, 'data'=> [5,4,3,2,1]},{'uid'=>2, 'data'=>[1,2,3,4,5]}]
 				
+				//处理摇到的筛子数据
+				resJson.shaizi_data.forEach(function(element){
+					if(Number(element.uid) == uid)
+					{
+						_this.data.fight.numList = element.data;
+						break;
+					}
+				});
+
+				//处理先手后手roundSelf: false, roundYou: true,
+				if (Number(resJson.cur_play_uid) == uid)
+				{
+					_this.data.fight.roundSelf = true;
+					_this.data.fight.roundYou = false;
+					//fight.clickNumlistHide=fase,clickNumlist2Hide=fase
+				}
+				else
+				{
+					_this.data.fight.roundSelf = false;
+					_this.data.fight.roundYou = true;
+					////fight.clickNumlistHide=fase,clickNumlist2Hide=fase
+				}
 
 				//获取匹配用户，匹配到之后
 				for (let i in resJson.userInfo) { //variable 为 index
@@ -155,13 +175,14 @@ Page({
 					}
 				}
 				that.setData(that.data);
+				that.gameAni.share_end();
 				util.playsound('matchuser.mp3');
 				return true;
 			case 'game_ticker'://答题记时
 				//console.log('连连看答题记时 resJson.ticker=' + resJson.ticker);
 				var that = this;
 				if (resJson.ticker < 0) resJson.ticker = 0;
-				if (that.extra.times) that.extra.times(resJson.ticker);
+				_this.setData({ 'fight.timer': resJson.ticker });
 				return true;
 			case 'game_answer_vs'://对手的答题数据
 				//resJson.guess_data => ['nums' =>10, 'shaizi' => 2] 对方猜的数据，如果是开就是结果数据
@@ -169,9 +190,19 @@ Page({
 				if (resJson.game_user_status != 0)//继续猜
 				{
 					//resJson.guess_data对方猜的数据
+					
 				}
 				else//开
 				{
+					//显示结果
+          t.setData({
+            'fight.timerHide': true,
+            'fight.clickNumlistHide': true,
+            'fight.clickNumlist2Hide': true,
+            'fight.handshareHide': false,
+            'fight.kaiGenHide': true,
+            'result.hide': false
+          });
 					//resJson.guess_data 实际结果数据
 					//resJson.game_user_status 胜利或失败
 				}
@@ -221,7 +252,7 @@ Page({
 			  'fight.clickNumlist': clickNumlist
 		  });
 	  }
-	  console.log(clickedList)
+	  //console.log(clickedList)
   },
   click_numlist: function(e){
 	  var clickNumlist = this.data.fight.clickNumlist.map(function(val,i){
