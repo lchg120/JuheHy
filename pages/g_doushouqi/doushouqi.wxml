@@ -4,9 +4,8 @@
     <!--顶部用户信息-->
     <view class='bg-top bg row space-b' style="background-image: url('{{imagesBaseUrl}}game/g_doushouqi/bg_top.png')">
       <view class='user mar-TB10 row'>
-        <view class='header round'>
-        </view>
-        <view class='name pad-LR20 round-20 ellipsis-1'>我的名字</view>
+        <view class='header round bg' style="background-image: url('{{leftview.userinfo.avatar}}')"></view>
+        <view class='name pad-LR20 round-20 ellipsis-1'>{{leftview.userinfo.name}}</view>
          <view class='huihe bg' hidden='{{true}}' style="background-image: url('{{imagesBaseUrl}}game/g_doushouqi/huiheBG_user.png')">
           <view class='huihe-time h100 end-X center-Y'>你的回合<text class='pad-LR10'>24</text>S</view>
         </view> 
@@ -15,8 +14,8 @@
         <view class='huihe bg' hidden='{{false}}' style="background-image: url('{{imagesBaseUrl}}game/g_doushouqi/huiheBG_other.png')">
           <view class='huihe-time h100 start-X center-Y'>对手的回合<text class='pad-LR10'>24</text>S</view>
         </view>
-        <view class='name pad-LR20 round-20 ellipsis-1'>对手名字</view>
-        <view class='header round'></view>
+        <view class='name pad-LR20 round-20 ellipsis-1'>{{rightview.userinfo.name}}</view>
+        <view class='header round bg' style="background-image: url('{{rightview.userinfo.avatar}}')"></view>
       </view>
     </view>
     <view class='help space-a row'>

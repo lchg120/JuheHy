@@ -160,7 +160,10 @@ g.navigateToMiniProgram = function (gid, vs_uid, time, tid) {
     break;
     case 4://吹牛
       url = '/pages/g_chuiniu/chuiniu?uid=' + g.getStorageSync('uid') + "&uid2=" + vs_uid + "&time=" + time + "&tid=" + tid + "&gid=" + gid;
-      break;
+    break;
+    case 5://斗兽棋
+      url = '/pages/g_doushouqi/doushouqi?uid=' + g.getStorageSync('uid') + "&uid2=" + vs_uid + "&time=" + time + "&tid=" + tid + "&gid=" + gid;
+    break;
     default:
     g.showmsg('游戏gid错误');
     return;

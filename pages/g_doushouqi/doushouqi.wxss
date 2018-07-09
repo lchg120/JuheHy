@@ -18,6 +18,7 @@ button {
 .header {
   width: 80rpx;
   height: 80rpx;
+  overflow: hidden;
 }
 .user .header {
   border: 6rpx solid #f82c54;
