@@ -1,0 +1,113 @@
+<!--pages/lianliankan/lianliankan.wxml--> 
+<view class='w100 h100 bg' style='background-image: url({{imagesBaseUrl}}game/lianliankan/home_bg.png); overflow:hidden;'>
+  <view class='w100 row space-b center-Y pad-TB20'>
+    <button class='back mar-LR20 bg round' bindtap='btn_back_clicked' style='background-image: url({{imagesBaseUrl}}game/lianliankan/icon_back.png);'></button>
+    <button class='help mar-LR20 end-X bg round' bindtap='btn_help_clicked' style='background-image: url({{imagesBaseUrl}}game/lianliankan/icon_help.png);'></button>
+  </view>
+
+  <!--用户数据-->
+  <view class='dataBox'>
+    <view class='dataBox-head row space-b'>
+      <view class='dataBox-bg user'>
+        <view class='user-time' style='background-image: url({{imagesBaseUrl}}game/lianliankan/time_bg_user.png); width: {{userNum}}%;'>
+          <view class='user-head bg round end-X' style='background-image: url({{leftview.userinfo.avatar}});'></view>
+        </view>
+      </view>
+      <view class='head-line bg center-posi round-10'><view class='head-line-icon bg' style='background-image: url({{imagesBaseUrl}}game/lianliankan/icon_xing.png);'></view></view>
+      <view class='dataBox-bg other end-X'>
+        <view class='other-time' style='background-image: url({{imagesBaseUrl}}game/lianliankan/time_bg_other.png); width: {{otherNum}}%;'>
+          <view class='other-head bg round end-X' style='background-image: url({{rightview.userinfo.avatar}});'></view>
+        </view>
+      </view>
+    </view>
+    <view class='dataBox-info row space-b center-Y'>
+      <view class='infoBox center-Y'>
+        <view class='infoBox-sex bg round' style='background-image: url({{imagesBaseUrl}}game/lianliankan/female.png);'></view>
+        <view class='infoBox-name'>{{leftview.userinfo.name}}</view>
+      </view>
+      <view class='infoBox-time center-posi center-X column'>
+        <view class='infoBox-time-width round-20'>
+          <view class='infoBox-time-icon' style='margin-left: {{gameTimeWidth}}%;'></view>
+        </view>
+        <view>
+          <text wx:if="{{gameTime>0}}">剩余{{gameTime}}秒</text>
+          <text wx:else>游戏结束</text>
+        </view>
+      </view> 
+      <view class='infoBox end-X center-Y'>
+        <view class='infoBox-name'>{{rightview.userinfo.name}}</view>
+        <view class='infoBox-sex bg round' style='background-image: url({{imagesBaseUrl}}game/lianliankan/male.png);'></view>
+      </view>
+    </view>
+  </view>
+  
+  <!--游戏框-->
+  <view class='gameBox'>
+    <canvas canvas-id="huaxian" style="width:{{uiwidth-10}}px;height:{{uiheight-5}}px;" class="canvas-test"/>
+    <view class='game w100 h100 round-20'>
+      <view class='pad-TRBL10 row wrap space-b'>
+      <block wx:for="{{row}}" wx:key="" wx:for-index="ind">
+        <view class='game-item round-20 center-Y' wx:for="{{row[ind]}}" wx:for-index="index" catchtouchstart='btn_clicked' data-x="{{index}}" data-y="{{ind}}" data-item='{{item}}' wx:key=''>
+          <button class="w100 h100 bg {{item.bg?'active':''}} {{item.status?'activeNull':''}}" style="background-image: url({{imagesBaseUrl}}game/lianliankan/{{item.imgType}})"></button>
+        </view>
+      </block>
+      </view>
+    </view>
+  </view>
+
+  <!--规则说明-->
+  <view class="mask {{tips?'active':''}}" wx:if='{{tips}}' bindtap='btn_help_clicked'>
+    <view class='tips w60 center-posi round-20'>
+      <view class='title center-X'>游戏说明</view>
+      <view class='pad-TB10'>
+        <view class='title-sub'>[规则]</view>
+        <view>1.点击链接两个相同的动物进行消除</view>
+        <view>2,两个的动物之间的<text>连线，最多只能拐两个弯</text></view>
+      </view>
+      <view class='pad-TB10'>
+        <view class='title-sub'>[操作]</view> 
+        <view class='tips-bg bg' style="background-image: url('{{imagesBaseUrl}}game/lianliankan/tips_bg.png')"></view>
+        <view class='center-X'> 点击连接<text>两个相同的动物</text></view>
+      </view>
+      <view class='pad-TB10'>
+        <view class='title-sub'>[胜负判定]</view>
+        <view>1.先将自己全部动物消除的人获胜</view>
+        <view>2.若游戏未结束，先退出的一方算输</view>
+        <view>若同时完成消除或退出游戏，则平局</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<!--匹配到对手-->
+<view class='column start w100 h100 matchViewBox' hidden='{{matchViewBox.isHide}}'>
+  <view class='matchUserLeft w100' animation="{{matchViewBox.matchViewLeftAni}}">
+      <image class='w100 h100 bg' src='{{imagesBaseUrl}}game/cycd/new_move/fight/left-in.png'></image>
+      <view class='userinfoLeft'>
+          <view class='headPic round'>
+              <view class='user-img w100 h100 bg round'  style='background-image: url({{leftview.userinfo.avatar}});'></view> 
+          </view>
+          <view class='extra column center-X center-Y'>
+              <view class='user-name center-X w100'>{{leftview.userinfo.name}}</view>
+          </view>
+      </view>
+  </view>
+  <view class='matchUserRight w100' animation="{{matchViewBox.matchViewRightAni}}">
+      <image class='w100 h100 bg' src='{{imagesBaseUrl}}game/cycd/new_move/fight/right-in.png'></image>
+      <view class='userinfoRight'>
+          <view class='headPic row center-Y space-a round'>
+              <!--头像加载背景start-->
+              <view class='item-head-item round' animation='{{headBgAni1}}'></view>
+              <view class='item-head-item round' animation='{{headBgAni2}}'></view>
+              <view class='item-head-item round' animation='{{headBgAni3}}'></view> 
+              <!--头像加载背景end-X-->
+              <view class='user-img w100 h100 bg round'  style='background-image: url({{rightview.userinfo.avatar}});'></view> 
+          </view>
+          <view class='extra column center-X center-Y'>
+              <view class='user-name center-X w100'>{{rightview.userinfo.name}}</view>
+          </view>
+      </view>
+  </view>
+</view>
+

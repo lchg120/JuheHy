@@ -1,0 +1,315 @@
+/* pages/lianliankan/lianliankan.wxss */
+page {
+  position: relative;
+}
+.back {
+  width: 68rpx;
+  height: 68rpx;
+  border: none;
+  background-size: 20rpx 36rpx;
+  background-color: #2f6eae;
+  background-position: 50% 50%;
+}
+.help {
+  width: 50rpx;
+  height: 50rpx;
+  border: none;
+  background-size: 16rpx 32rpx;
+  background-color: #ff7e00;
+  background-position: 50% 50%;
+}
+
+/*匹配到对手*/
+.matchViewBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  overflow: hidden;
+  background: #673ab7;
+  color: #fff;
+}
+.headPic {
+  width: 180rpx; 
+  height: 180rpx;
+  border: 6rpx solid rgba(250, 250, 250, .9)
+}
+.extra{
+  width:180rpx; 
+  font-size: 28rpx;
+}
+
+.matchUserLeft{ 
+  position: absolute; 
+  left: -110%; 
+  top: 80rpx; 
+  height: 555rpx;
+} 
+.userinfoLeft{
+  position:absolute; 
+  right:40rpx; 
+  top:180rpx;
+}
+.matchUserLeft .headPic {
+  position: relative;
+  background: #ff3f87;
+}
+
+.matchUserRight{ 
+  position: absolute; 
+  right: -110%; 
+  top: 506rpx; 
+  height: 555rpx;
+}
+.userinfoRight{
+  position:absolute; 
+  left:70rpx; 
+  top:180rpx;
+}
+.userinfoRight .headPic {
+  position: relative;
+  background: #3fc2ff;
+}
+
+.headPic .user-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+.extra .user-name {
+  margin-top:26rpx;
+}
+.extra .user-lv {
+  font-weight:bold
+}
+
+.item-head-item {
+  width: 24rpx;
+  height: 24rpx;
+  background-color: gray;
+  background: #000;
+  opacity: 0.3;
+}
+
+
+/*用户数据*/
+.dataBox {
+  margin-bottom: 20rpx;
+  color: #fff;
+}
+.dataBox-head {
+  width: 85%;
+  height: 68rpx;
+  margin: auto;
+  background:#526cf7;
+  position: relative;
+  -webkit-border-radius: 40rpx;
+  border-radius: 40rpx;
+}
+.dataBox-bg {
+  width: 45%;
+}
+.user {
+   -webkit-border-top-left-radius: 40rpx;
+  -webkit-border-bottom-left-radius: 40rpx;
+  border-top-left-radius: 40rpx; 
+  border-bottom-left-radius: 40rpx;  
+}
+.other {
+  -webkit-border-top-right-radius: 40rpx;
+  -webkit-border-bottom-right-radius: 40rpx;
+  border-top-right-radius: 40rpx; 
+  border-bottom-right-radius: 40rpx; 
+  
+}
+ .user-time {
+  position: relative;
+  z-index: 2;
+  width: 60%;
+  height: 100%;
+  -webkit-border-top-left-radius: 40rpx;
+  -webkit-border-bottom-left-radius: 40rpx;
+  border-top-left-radius: 40rpx; 
+  border-bottom-left-radius: 40rpx; 
+  background-size: 50rpx 100%;
+  background-color: #526cf7;
+} 
+.other-time {
+  position: relative;
+  z-index: 1;
+  width: 80%;                              
+  height: 100%;
+  -webkit-border-top-right-radius: 40rpx;
+  -webkit-border-bottom-right-radius: 40rpx;
+  border-top-right-radius: 40rpx; 
+  border-bottom-right-radius: 40rpx; 
+  background-size: 50rpx 100%;
+}
+.user-head, .other-head {
+  position: absolute;
+  top: -2rpx;
+  width: 60rpx;
+  height: 60rpx;
+}
+.user-head {
+  right: -50rpx;
+  border: 8rpx solid #3fc2ff;
+  background-color: #ff3f87;
+}
+.other-head {
+  left: -50rpx; 
+  border: 8rpx solid #ff3f87;
+  background-color: #3fc2ff;
+}
+.head-line {
+  position: relative;
+  width: 12rpx;
+  height: 130%;
+  margin-top: -10rpx;
+  background: -webkit-linear-gradient(#ebe832, #ff8618);
+  background: linear-gradient(#ebe832, #ff8618);
+}
+.head-line-icon {
+  position: absolute;
+  top: -50rpx;
+  left: -20rpx;
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.dataBox-info {
+  position: relative;
+  width: 90%;
+  height: 60rpx;
+  margin: 20rpx auto;
+}
+.infoBox {
+  width: calc(50% - 76rpx);
+  height: 36rpx;
+  font-size: 22rpx;
+  -webkit-border-radius: 40rpx;
+  border-radius: 40rpx;
+  background-color: #6a72f5;
+  -webkit-background: rgba(106,114,245,0.5);
+  background: rgba(106,114,245,0.5);
+}
+.infoBox-time {
+  width: 140rpx;
+  height: 50rpx;
+  line-height: 25rpx;
+  font-size: 24rpx;
+  text-align: center;
+}
+.infoBox-time-width {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 10rpx;
+  background-image: -webkit-linear-gradient(left, #ff2800, yellow, #00ff00);  
+  background-image: linear-gradient(90deg, #ff2800, yellow, #00ff00); 
+  overflow: hidden;
+}
+.infoBox-time-icon {
+  width: 100%;
+  height: 100%;
+  background: #fff; 
+}
+.infoBox-sex {
+  width: 36rpx;
+  height: 36rpx;
+}
+.infoBox-name {
+  height: 30rpx;
+  line-height: 30rpx;
+}
+ .infoBox:nth-child(1) .infoBox-name {
+  padding: 0 6rpx;
+}
+.infoBox:nth-last-child(1) .infoBox-name {
+  padding: 0 6rpx;
+} 
+
+/*游戏框*/
+.gameBox {
+  width: 94%;
+  margin: 5px auto 0;
+  position: relative;
+}
+.canvas-test{
+  position: absolute;
+  top:9px;
+  bottom: 0;
+  left: 9px;
+  right:5px;
+  z-index: 0;
+}
+.game {
+  border: 4rpx solid #4419f6;
+  background: #6b57f5;
+}
+.game-item {
+  width: 13%;
+  height: 80rpx;
+  margin: 4rpx;
+  background: #4f4bbc;
+}
+.game-item button {
+  transform: scale(1.2); 
+  margin: auto;
+  border: none;  
+  background-color: none; 
+}
+.game-item .active {
+  transform: scale(1.4); 
+}
+.game-item .activeNull {
+  transform: scale(2.2); 
+}
+
+
+/*规则说明*/
+.mask {
+  background: none;
+  transform: scale(0);
+}
+.mask.active {
+  animation: maskAni 0.15s linear forwards;
+}
+@keyframes maskAni {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.tips {
+  height: 650rpx;
+  padding: 60rpx;
+  background: #fff;
+  color: #a2a2a2;
+  font-size: 28rpx;
+  font-weight: bold;
+  box-shadow: 0rpx 0rpx 100rpx #000;
+}
+.title {
+  color: #464545;
+  font-size: 36rpx;
+}
+.title-sub {
+  color: #464545;
+  font-size: 28rpx;
+}
+.tips text {
+  color: #ff3e3e;
+}
+.tips-bg {
+  width: 400rpx;
+  height: 120rpx;
+  margin: 10rpx auto;
+}
+.bgactive{
+  background: #ccc;
+}

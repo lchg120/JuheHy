@@ -1,0 +1,16 @@
+<view class='start'>
+    <view class='start-bg bg center-posi' style='background-image:url({{imagesBaseUrl}}start/start_bg.png)'></view>
+    <view class='copyright bg' style='background-image:url({{imagesBaseUrl}}start/copyright.png)'></view>
+</view>
+
+<!-- <view class='startview'>
+    <button style='width:100rpx;height:100rpx;' bindtap='jump_mini'>跳</button>
+</view> -->
+
+<!-- <view class="startview" style='background-image:url({{bgurl}})'>
+    <view animation="{{aniWeb}}" class="mask1" style='background-image:url("{{logourl}}")'>
+      <view class='text'>Loading...</view>
+    </view>
+    <button open-type="getUserInfo" bindgetuserinfo="bindgetuserinfo">授权登录</button>
+
+</view> -->

@@ -1,0 +1,104 @@
+/* pages/userEdit/userEdit.wxss */
+
+page {
+  background:#fff;
+}
+.viewBg {
+  height: 100%;
+  font-size: 28rpx;
+  overflow: hidden;
+  background: #fbfbfb;
+}
+.nav{
+  height:80rpx;
+  position: relative;
+  background: #fff;
+}
+.nav-title {
+  font-size: 32rpx;
+}
+.nav .btn {
+  position: absolute;
+  top: 0;
+  right: 20rpx;
+  bottom: 0;
+  margin: auto;
+}
+
+.btn-text{
+  width:120rpx;
+  font-size: 24rpx;
+  color: #d0d0d0;
+  border: 2rpx solid #d0d0d0;
+}
+
+
+.page-banner{
+  padding: 0 20rpx 10rpx;
+  border-bottom: 2rpx solid #e8e8e8;
+  background: #fff;
+}
+.banner {
+  height: 220rpx;
+  background-color: #fbfbfb;
+  background-size: 40rpx 40rpx;
+  background-position: 50% 50%;
+}
+.banner:nth-child(1) {
+  background-size: 80rpx 80rpx;
+}
+.page-banner .text {
+  color: #56585b;
+  text-indent: 20rpx;
+}
+
+
+.info{
+  margin-top: 20rpx;
+  border-top: 2rpx solid #e8e8e8;
+  border-bottom: 2rpx solid #e8e8e8;
+  background: #fff;
+}
+.info-item{
+  height: 60rpx;
+  font-size: 30rpx;
+  color: #000;
+}
+.item-l{}
+.item-r{
+  color: #89939b;
+}
+.item-r-text{
+  padding-right: 20rpx;
+}
+.item-r-img{
+  width: 22rpx;
+  height: 32rpx;
+}
+
+.sign{
+  margin-top: 20rpx;
+  font-size: 36rpx;
+  color: #000;
+  border-top: 2rpx solid #e8e8e8;
+  background: #fff;
+}
+.sign .item-l {
+  height: 40rpx;
+  font-size: 32rpx;
+  background: #fff;
+}
+.sign .edit {
+  margin: 10rpx 0;
+  color: #000;
+  font-size: 24rpx;
+  height: 80rpx;
+  line-height: 40rpx;
+  border: 2rpx solid #e8e8e8;
+}
+.btn-back {
+  margin: 10rpx auto 0;
+  font-size: 28rpx;
+  color: #000;
+  border: 2rpx solid #e8e8e8;
+}

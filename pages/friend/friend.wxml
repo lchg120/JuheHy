@@ -1,0 +1,49 @@
+<!--pages/friend/friend.wxml-->
+<!--新消息进来提醒-->
+<view class='new-msg' data-current="{{new_msgtid}}" bindtap="newmsg_clik" hidden='{{new_msgshow}}'>您有新消息进来</view>
+<view class='viewBg'>
+  <view class='search pad-TRBL20'>
+    <view class='box row center-Y pad-LR20 space-b'>
+      <view class='search-bg bg center-X' style='background-image: url({{imagesBaseUrl}}common/icon_search.png);'></view>
+      <view class='w60'>
+        <!-- <input class='search-input' id='search' bindtap='btn_searchShow_clicked' placeholder='搜索微信号' placeholder-class='placeholder' value="{{sendMsg}}" bindinput ="userInput"></input> -->
+        <input class="search-input" type='text' placeholder='搜索uid' placeholder-class='placeholder' bindinput="btn_searchShow_clicked" value='{{inputSearch}}'></input>
+      </view>
+      <view class='search-back' id='searchBack'>
+         <button class='w100 h100 bg' hidden='{{searchHide}}' bindtap='btn_searchHide_clicked' style='background-image: url({{imagesBaseUrl}}common/btn_back_gray.png);'></button>  
+      </view>
+      <view class='search-btn center-Y center-X'>
+        <button class='w100 h100' bindtap='btn_search_clicked'>搜索</button>
+      </view>
+    </view>
+    <view class='search-text center-X center-Y'  hidden='{{searchHide}}'>
+      <button class='w100 h100' bindtap='btn_other_clicked'>搜索ID：{{otherName}}</button>
+    </view>
+    <view class='userId center-X center-Y' wx:if='{{searchHide == true}}'>
+      <button class='w100 h100'  bindtap='btn_user_clicked'>我的id:{{userdata.uid}}</button>
+    </view>
+  </view>
+
+  <view class='friend pad-LR20'>
+    <view class='title pad-TB20'>邀请好友</view>
+    <button class='friend-icon mar-TB20 bg' style='background-image: url({{imagesBaseUrl}}common/weixin_head.png)' bindtap='btn_invite_cliked'></button>
+  </view>
+  <view class='list pad-TRBL20'>
+    <view class='title pad-TB20'>新的朋友</view>
+    <view class='list-item mar-TB20 row center-line' wx:for="{{friend}}" wx:key="" data-index="{{index}}" data-item="{{item}}">
+      <button class='list-item-head bg round' style='background-image: url({{item.headImg}})' data-state="{{item.state}}" data-suid="{{item.uid}}" bindtap='btn_other_clicked'></button>
+      <button class='list-item-name start-X center-Y' bindtap='btn_other_clicked' data-state="{{item.state}}" data-suid="{{item.uid}}">{{item.name}}</button>
+      <view class='list-item-state center-X center-Y'>
+        <block  wx:if="{{item.state != '1'}}">
+          {{item.state}}
+        </block>
+        <block  wx:if="{{item.state == '1'}}">
+          <button class='list-item-btn'  bindtap='btn_confirm_clicked' data-index="{{index}}" data-item="{{item}}">同意</button>
+        </block>
+      </view>
+    </view>
+    <button class='btn-back w50 pad-TB10 round-20' bindtap='btn_back_clicked'>返回首页</button> 
+  </view>
+</view>
+
+

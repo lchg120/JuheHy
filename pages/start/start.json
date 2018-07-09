@@ -1,0 +1,7 @@
+{
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "游戏聚合平台",
+    "navigationBarBackgroundColor": "#8435f3",
+    "backgroundColor": "#8435f3",
+    "enablePullDownRefresh": false
+}

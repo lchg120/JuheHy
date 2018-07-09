@@ -1,0 +1,57 @@
+<!--pages/other/other.wxml-->
+<!--新消息进来提醒-->
+<view class='new-msg' data-current="{{new_msgtid}}" bindtap="newmsg_clik" hidden='{{new_msgshow}}'>您有新消息进来</view>
+<view class='headImg w100 bg' style='background-image: url({{otherdata.avatarUrl}});'></view>
+<view class='info column pad-TRBL20'>
+  <text class='info-name'>{{otherdata.nickName}}</text>
+  <text class='info-id pad-TB10'>id:{{otherdata.uid}}</text>
+  <view class='info-data'> 
+    <text>{{otherdata.sex}} ·</text> 
+    <!-- <text>{{otherdata.star}}岁 · </text>
+    <text>{{otherdata.star}} |</text> -->
+    <text> {{otherdata.city}}</text>
+  </view>
+  <!-- <button class='info-edit pad-TRBL10 round-10' bindtap='btn_edit_clicked'>设置备注</button> -->
+</view>
+<view class='game pad-TRBL20 mar-TB20'>
+  <view class='game-title'>常玩的游戏</view>
+  <view class='game-box row'>
+    <view class='game-item round-10' wx:for="{{game}}" wx:key="" data-i="{{index}}" data-item="{{item}}"  wx:if="{{index<3}}"  bindtap="game_click">
+      <view class='game-item-img bg' style="background-image: url({{item.gimg}})"></view>
+      <view class='game-item-state column pad-TB10'>
+        <view class='title center-I'>{{item.gname}}</view>
+        <view class='state center-I'>胜{{item.sheng}}负{{item.fu}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='column center-X center-Y pad-TB20'>
+   <button class='btn-send w50 mar-TB10 round-20' wx:if='{{otherdata.friendState}}' bindtap='btn_online_clicked'>
+    <view class='btn-img bg' style='background-image: url({{imagesBaseUrl}}common/icon_info.png);'></view>
+    <view class='btn-text pad-TB10'>发送信息</view>
+  </button> 
+  <button class='btn-add w50 mar-TB10 round-20' hidden='{{otherdata.friendState}}'  bindtap='btn_add_clicked'>
+    <view class='btn-img bg' style='background-image: url({{imagesBaseUrl}}common/userAdd_black.png);'></view>
+    <view class='btn-text pad-TB10'>添加好友</view>
+  </button>
+  <button class='btn-back w50 pad-TB10 round-20' bindtap='btn_back_clicked'>返回用户信息</button>
+</view>
+<view class='mask' hidden="{{stateHidden}}" bindtap='btn_hidden_clicked'>
+  <view class='mask-state w80 round-20'>
+    <view class='mask-state-item center-X center-Y' wx:for="{{otherState}}" wx:key="" data-i="index" data-item="item">{{item.text}}</view>
+  </view>
+</view>
+<view class='mask add' hidden="{{addFriend}}">
+  <form>
+    <view class='add-box'>
+      <view class='add-box-btn row space-b pad-LR20'>
+        <button class='pad-TRBL20' catchtap='btn_quit_clicked'>取消</button>
+        <view  class='pad-TRBL20'>验证申请</view>
+        <button class='pad-TRBL20' catchtap='btn_enter_clicked'>确定</button>
+      </view>
+      <view class='textBox'>
+        <textarea type='text' value='我是{{userdata.nickName}}'></textarea>
+      </view>
+    </view>
+  </form>
+</view>

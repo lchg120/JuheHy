@@ -1,0 +1,23 @@
+<!--pages/playGame/playGame.wxml-->
+<!--公共头部-->
+<view class='navHead fiexd row space-b center-Y'>
+  <button class='left bg round' style='background-image: url({{userdata.avatarUrl}});'  bindtap='btn_user_clicked' open-type="getUserInfo" lang="zh_CN"></button> 
+  <view class='content w70 row space-b'>
+    <button bindgetuserinfo="click_nav" data-url="{{item.url}}" class="navHead-item w25 pad-TB10 center center2 center-I {{item.active?'active':''}}"  wx:for="{{navHead}}" wx:key="" data-item="{{item}}" data-index="{{index}}" open-type="getUserInfo" lang="zh_CN"> 
+      {{item.text}} 
+      <view class='line' animation="{{headAni}}"></view>
+    </button>
+  </view>
+  <button class='right bg' style='background-image: url({{imagesBaseUrl}}common/userAdd.png);' bindtap='btn_add_clicked' open-type="getUserInfo" lang="zh_CN"></button>
+</view>
+
+<!--主体内容-->
+<view class='main row wrap pad-LR10'> 
+  <button data-gid="{{item.gid}}" class='main-item round-10 column' wx:for="{{main}}" wx:key="" data-item="{{item}}" data-index="{{index}}" open-type="getUserInfo" lang='zh_CN' bindgetuserinfo="click_game">
+    <view class='main-item-img w100'><image src='{{item.bg}}' data-current="{{item.gid}}" bindtap="game_click"></image></view> 
+    <view class='main-item-content column pad-TB10'>
+      <text class='center-I'>{{item.text}}</text>
+      <text class='center-I'>{{item.num}}对正在玩</text>
+    </view>
+  </button>
+</view> 

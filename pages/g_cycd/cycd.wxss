@@ -1,0 +1,221 @@
+/* pages/g_cycd/g_cycd.wxss */
+page {
+  background-color: #673ab7;
+}
+.matchViewBox{position: relative;width:100%; height: 100%; overflow: hidden; color: #fff; background-color:#673ab7;}
+.waitView{position: absolute; top: 0; left: 0; z-index: 1; width:100%; height:100%; font-size: 28rpx;}
+.loading{width:17px; display: inline-block}
+.loading:after {vertical-align: bottom; animation: ellipsis 1s infinite; content: "\2026"; overflow: hidden; display: inline-block;}
+@keyframes ellipsis {from {width:2px;}to{width: 17px;}}
+
+.myinfoHeadpic{width: 128rpx; height: 128rpx;}
+.myinfo{font-size: 32rpx;}
+.matchView{width:100%; height:100%; position: relative; background-position: top center; background-repeat: no-repeat;
+background-size: cover}
+
+.userinfoHeadpic{width: 180rpx; height: 180rpx;}
+.userinfoHeadpic image{width:100%; height: 100%; border-radius: 50%; border: 6rpx solid rgba(250, 250, 250, .9)}
+.userinfoExtra{width:180rpx; font-size: 28rpx;}
+.matchVsLogo{width:620rpx;height: 236rpx;
+	position: absolute;
+	left:calc((100% - 620rpx)/2);
+	top:490rpx;
+	z-index: 9999;
+}
+.matchVsLogo image{width:100%; height:100%;}
+
+.matchUserLeft{ position: absolute; left:-830rpx; top:80rpx; width:100%;} /*从最大宽度-830，移动到-294*/
+.matchUserLeft .bg{width:830rpx; height: 555rpx;}
+.userinfoLeft{position:absolute; right:40rpx; top:170rpx;}
+
+.matchUserRight{ position: absolute; right:-830rpx; top:506rpx; width:100%;}/*从最大宽度-830，移动到-294*/
+.matchUserRight .bg{width:830rpx; height: 555rpx;}
+.userinfoRight{position:absolute; left:70rpx; top:180rpx;}
+
+/*对战*/
+.fightView{width:100%; height: 100%; position: relative;}
+
+.fightViewUser{width:691rpx; height: 162rpx; position: absolute; left: calc((100% - 691rpx)/2); top: 20rpx;}
+.fightViewLeft{position: absolute; left: 0;top: 0; width:288rpx; height: 100%;}
+.fightViewLeft .userArea{position: absolute; width:154rpx; left: 4rpx; top: 0rpx;}
+.fightViewLeft .userScore{position:absolute; left: 162rpx; top: 65rpx; font-size: 40rpx; color:#f5750e; font-weight: 800; width: 110rpx; text-align: center}
+.fightViewLeft .addScore{position:absolute; left: 162rpx; top: 58rpx; font-size: 40rpx; font-weight: 800; width: 110rpx; text-align: center; opacity: 0}
+
+.fightViewUser .userArea .avatar{height: 150rpx;width:150rpx; border: 8rpx solid #cfcfcf; -webkit-border-radius: 50%; border-radius: 50%;}
+.fightViewUser .userArea .avatar image{width:100%; height: 100%; border-radius: 50%;}
+.fightViewUser .userArea .userName{width:100%; height:90rpx; line-height: 30rpx; font-size: 24rpx; margin-top:18rpx; text-align: center; color: #fff;}
+.fightViewRight{position: absolute; width:288rpx; height: 100%; left: 404rpx; top: 0; animation-duration:18rpx; }
+.fightViewRight .userScore{position:absolute; left: 12rpx; top: 65rpx; font-size: 40rpx; color:#f5750e; font-weight: 800; width: 110rpx; text-align: center;}
+.fightViewRight .addScore{position:absolute; left: 12rpx; top: 58rpx; font-size: 40rpx; font-weight: 800; width: 110rpx; text-align: center; opacity: 0}
+
+.fightViewRight .userArea{position: absolute; width:154rpx; left: 132rpx; top: 0rpx;}
+
+/*时间区域*/
+.vsViewTime{width: 100%; position: absolute; left: 0; right:0;  top: 180rpx; margin:auto;color: #fff;}
+  /* width: 100%;
+  height: 100%;
+  margin-bottom: 10rpx;
+  background-image: -webkit-linear-gradient(left, #ff2800, yellow, #00ff00);  
+  background-image: linear-gradient(90deg, #ff2800, yellow, #00ff00); 
+  overflow: hidden; */
+.vsViewTimeBar{  margin: auto; width: 202rpx; height: 23rpx;   background-image: -webkit-linear-gradient(left, #ff2800, yellow, #00ff00);
+background-image: linear-gradient(90deg, #ff2800, yellow, #00ff00);  -webkit-border-radius: 20rpx;  border-radius: 20rpx; overflow: hidden;}
+.vsViewTimeBar view{width: 100%; height: 100%; background: #fff;}
+.timeProcess{  margin: 8rpx auto 0; width: 202rpx; font-size: 24rpx; text-align: center;}
+.timeProcess text{color:#f2ad19;}
+/*提示*/
+.tips {
+  position: absolute; top: 0rpx; right: 0; left: 0; margin: auto; width: 90%; height: 360rpx; line-height: 60rpx; background-color: #5a329f;  font-size: 32rpx; border-top-left-radius: 30rpx; border-top-right-radius: 30rpx; font-weight:bold;  color: #fff;}
+.tipsText {
+  margin: auto; width: 100%; height: 60rpx; line-height: 60rpx;background-color: #4d2b89; border-top-left-radius: 30rpx; border-top-right-radius: 30rpx; text-align: center;
+}
+.tipsContent {
+  padding:168rpx 20rpx 0rpx; height: 132rpx; line-height: 44rpx; font-size: 28rpx; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp:3; -webkit-box-orient: vertical;text-align: center
+}
+/*.tips .tipsText {
+  animation: tpText 4s infinite;
+}
+@-webkit-keyframes tpText{
+  0% { transform: rotateX(0deg) }
+  25% { transform: rotateX(360deg) }
+  50% {  transform: rotateY(360deg) }
+  75% {  transform: rotateY(0deg) }
+  100%{ transform: rotateX(0deg) }
+}
+@keyframes tpText{
+  0% { transform: rotateX(0deg) }
+  25% { transform: rotateX(360deg) }
+  50% {  transform: rotateY(360deg) }
+  75% {  transform: rotateY(0deg) }
+  100%{ transform: rotateX(0deg) }
+}*/
+
+/*问题答案区域*/
+.questionView{position: relative; width: 100%; top:290rpx; text-align: center}
+.vsViewQuestion{position: absolute; width:620rpx; top:80rpx; left: calc((100% - 600rpx)/2)}
+.questionItem{width:155rpx; height: 126rpx; position: relative}
+.questionItem image{width:126rpx; height: 126rpx;}
+.questText{position: absolute; left: 0; top:0; width:100%; padding-top:20rpx; text-align: center; font-size: 60rpx;color:#fff;}
+.wenhao{position: absolute; left: 46rpx; top:26rpx;}
+
+.vsViewAnswer{position: absolute; width:600rpx; top: 390rpx; left: calc((100% - 600rpx)/2)}
+.answerItem{width:200rpx; height: 162rpx; position: relative; color:#46169d;}
+.answerItem image{width:136rpx; height: 136rpx;}
+.answerText{position: absolute; left: 0; top:0; width:100%; padding-top:24rpx; text-align: center; font-size: 62rpx;}
+.answerIcon{position: absolute; right: 18rpx; top: 0rpx; width: 50rpx; height: 50rpx; z-index: 999;}
+.answerIcon image{width:100%; height: 100%;}
+
+/*对战结果显示*/
+.resultView{position: absolute;  top:0; right: 0; left: 0; margin: auto; width:100%; height: 100%;}
+.bgIcon {position:absolute; top:176rpx; right: 0; left: 0; margin: auto;}
+.cirleLine{
+	width:377rpx; height: 381rpx;
+	animation: cirleLine 3s linear  infinite;
+	-webkit-animation: cirleLine 3s linear infinite;
+}
+.cirleLine image{width:100%; height: 100%;}
+.resultIcon{width:387rpx; position: absolute; top:56rpx; right: 0; left: 0; margin: auto;}
+.goodsIcon {width: 300rpx; position: absolute;top: 176rpx; right: 0;left: 0;margin: auto;z-index:2;}
+.goodsIcon image {width: 100rpx;height: 100rpx; margin: auto;}
+.goodsIcon text {color: #fff; font-size:20rpx;}
+.showGlod{width:200rpx; position: absolute; left: calc((100% - 387rpx)/2); top: 556rpx;}
+.glodNumShow{padding: 6rpx 0 0 20rpx; font-size: 40rpx}
+.showExp{width:200rpx; position: absolute; top: 556rpx; left: calc((100% - 387rpx));}
+.expNumShow{padding: 6rpx 0 0 20rpx; font-size: 40rpx}
+.showLine{width:382rpx; position: absolute; top: 596rpx; left: calc((100% - 382rpx)/2);}
+.showGoods {width:200rpx; position: absolute; top: 644rpx; left: calc((100% - 387rpx)/2);}
+.showNumGoods{padding: 6rpx 0 0 20rpx; font-size: 40rpx}
+.showLv {width:200rpx; position: absolute; top: 644rpx; left: calc((100% - 387rpx));}
+.showNumLv {padding: 6rpx 0 0 20rpx; font-size: 40rpx}
+.resultBtn{width:396rpx; height: 100rpx; position: absolute; left: calc((100% - 396rpx)/2); border-radius: 10rpx; font-size: 40rpx; font-weight: 800; letter-spacing: 4rpx}
+.continueBtn{top:726rpx; background: #ffffff; color: #7742d7}
+.shateBtn{top:856rpx; background: #ff8022;}
+.shareTip{width:100%; position:absolute; top:1026rpx; font-size: 28rpx;}
+.lvUp {
+  position: absolute; top: 0; left: 0; margin: auto; z-index: 3; width: 100%; height: 100%; background-color: rgba(0, 0, 0, .5);
+}
+.lvUp.hide {
+  display: none;
+}
+.lvUpBg {
+  margin: 140rpx auto 0;
+  width: 78vw;
+  height: 60vh;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.lvUpText {
+  padding-top: 260rpx; 
+  font-size: 34rpx;
+  color: #383838;
+  text-align: center;
+}
+.lvUpText .text1{
+  font-size: 68rpx;
+  font-weight: bold;
+  color: #ff3f73;
+}
+.lvUpText .text2 {
+  margin: 30rpx auto;
+  position: relative;
+  width: 60vw;
+  border: 1px solid #c7c7c7;
+  color: #c9c9c9;
+}
+.lvUpText .text2 text {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 200rpx;
+  height: 50rpx;
+  color: 52rpx;
+  background: #fff;
+}
+.lvUpText .state {
+  color: #022660;
+}
+.lvUpText .btn {
+  margin: 20rpx auto 0;
+  width: 394rpx;
+  height: 100rpx;
+  background: #ff8023;
+  color: #fff;
+  -webkit-border-radius: 20rpx;
+  border-radius: 20rpx;
+  border: none;
+  box-shadow: 0 10rpx 8rpx rgba(0,0,0,0.5);
+}
+
+@keyframes cirleLine {
+	from{transform: rotate(0deg);}to{transform:rotate(30deg);}
+	from, 50%, to {opacity: 1;scale:(1.2,1.2)}25%, 75% {opacity: 0;scale:1}
+}
+@-webkit-keyframes cirleLine {
+	from{transform: rotate(0deg);}to{transform:rotate(30deg);}
+	from, 50%, to {opacity: 1;scale:(1.2,1.2)}25%, 75% {opacity: 0;scale:1}
+}
+
+.btn-back {
+  margin-top: 50rpx;
+  width: 300rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  webkit-border-radius: 10rpx;
+  border: none;
+  border-radius: 10rpx;
+  background: #fff;
+  text-align: center;
+  text-size: 16rpx;
+  color: #673ab7;
+
+}
+
+/*背景抖动效果*/
+.douBox {
+  width: 200rpx;	height: 200rpx;margin-top:100rpx;
+}
+
+.answer_sijiti{height: 150rpx;width: 300rpx;margin:100rpx auto}

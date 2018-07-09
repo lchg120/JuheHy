@@ -1,0 +1,26 @@
+<!--pages/chat/chat.wxml-->
+<!--公共顶部start-->
+<!--新消息进来提醒-->
+<view class='new-msg' data-current="{{new_msgtid}}" bindtap="newmsg_clik" hidden='{{new_msgshow}}'>您有新消息进来</view>
+<view class='navHead fiexd row space-b center-Y'>
+  <button class='left bg round' style='background-image: url({{userdata.avatarUrl}});'  bindtap='btn_user_clicked' open-type="getUserInfo" lang="zh_CN"></button> 
+  <view class='content w70 row space-b'>
+    <button bindgetuserinfo="click_nav" data-url="{{item.url}}" class="navHead-item w25 pad-TB10 center center2 center-I {{item.active?'active':''}}"  wx:for="{{navHead}}" wx:key="" data-item="{{item}}" data-index="{{index}}" open-type="getUserInfo" lang="zh_CN"> 
+       {{item.text}} 
+      <view class='line' animation="{{headAni}}"></view>
+    </button>
+  </view>
+  <button class='right bg' style='background-image: url({{imagesBaseUrl}}common/userAdd.png);' bindtap='btn_add_clicked' open-type="getUserInfo" lang="zh_CN"></button>
+</view>
+<!--主体内容-->
+<view class='page-body' style='height:{{uiheight}}px;'>
+  <view style='height:60px;'></view>
+  <view class='main pad-LR20'>
+    <button class='main-item row center-Y start-X' wx:for="{{flist}}" wx:key="" bindtap="btn_friend_clicked" data-tid="{{item.tid}}">
+      <view class='left round bg' style='background-image: url({{item.userImg}});'></view>
+      <view class='content column'>
+        <text class='center-Y ellipsis-1'>{{item.name}}</text>
+      </view>                                                                                                                              
+    </button>
+  </view>
+</view>

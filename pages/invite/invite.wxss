@@ -1,0 +1,15 @@
+/* pages/invite/invite.wxss */
+.main {
+  position: relative;
+}
+.btn-invite-wx {
+  position: absolute;
+  right: 0;
+  bottom: 150rpx;
+  left: 0;
+  margin: auto;
+  z-index: 1;
+  width: 350rpx;
+  height: 350rpx;
+  background-size: 350rpx 300rpx;
+}

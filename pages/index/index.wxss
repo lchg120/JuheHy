@@ -1,0 +1,113 @@
+/* pages/index/index.wxss */
+page {
+  height: auto;
+}
+ .fiexd{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  height: 60px;
+}
+/*新消息进来提醒*/
+.new-msg{
+  position:fixed;
+  top:10rpx;
+  left:10rpx;
+  right:10rpx;
+  height:70rpx;
+  line-height: 70rpx;
+  font-size:12px;
+  z-index:99;
+  margin: auto;
+  text-align: center;
+  background: #e8e8e8;
+  border: 1rpx solid #dedede;
+  border-radius: 30rpx;
+  opacity:0.9;
+}
+/*广告位*/
+.banner {
+  margin-top:60px; 
+  height: 130rpx;
+  padding: 15rpx 20rpx;
+  background: -webkit-linear-gradient(top,#b762fa,#c972fd); 
+  background: linear-gradient(top,#b762fa,#c972fd);
+}
+
+/*分类导航*/
+.nav {}
+.nav-img {
+  width: 108rpx;
+  height: 108rpx;
+}
+
+.nav-text {
+  /* height: 30px;
+  line-height: 30px; */
+  font-size: 12px;
+  color: #7d7d7d;
+  margin-top: 16rpx;
+}
+
+/*主体*/
+.main {
+  margin: auto;
+}
+.main-item {
+  width: 31.33%;
+  margin: 10rpx 1%;
+  color: #fff;
+  background: #d15563;
+  overflow: hidden;
+}
+.main-item-img {
+  height: 240rpx;
+}
+.main-item-content {}
+.main-item-content text {}
+.main-item:nth-child(9n+1){
+  background: -webkit-linear-gradient(left,#db6a76,#d15461); 
+  background: linear-gradient(left,#db6a76,#d15461);
+}
+.main-item:nth-child(9n+2){
+  background: -webkit-linear-gradient(left,#78ca48,#67b138); 
+  background: linear-gradient(left,#78ca48,#67b138);
+}
+.main-item:nth-child(9n+3){
+  background: -webkit-linear-gradient(left,#ecac4c,#f0994c); 
+  background: linear-gradient(left,#ecac4c,#f0994c);
+}
+.main-item:nth-child(9n+4){
+  background: -webkit-linear-gradient(left,#3251f6,#50adf4); 
+  background: linear-gradient(left,#3251f6,#50adf4);
+}
+.main-item:nth-child(9n+5){
+  background: -webkit-linear-gradient(left,#3b6bf6,#3464f6); 
+  background: linear-gradient(left,#3b6bf6,#3464f6);
+}
+.main-item:nth-child(9n+6){
+  background: -webkit-linear-gradient(left,#c43bb4,#4f13d4); 
+  background: linear-gradient(left,#c43bb4,#4f13d4); 
+}
+.main-item:nth-child(9n+7){
+  background: -webkit-linear-gradient(left,#cf7755,#b15826); 
+  background: linear-gradient(left,#cf7755,#b15826));
+}
+.main-item:nth-child(9n+8){
+  background: -webkit-linear-gradient(left,#4293ea,#5ecd80); 
+  background: linear-gradient(left,#4293ea,#5ecd80);
+}
+.main-item:nth-child(9n+9){
+  background: -webkit-linear-gradient(left,#b345e6,#7f26db); 
+  background: linear-gradient(left,#b345e6,#7f26db);
+}
+
+.main-item-content text:nth-child(1){
+  font-size: 28rpx;
+}
+.main-item-content text:nth-last-child(1){
+  font-size: 20rpx;
+  opacity: 0.5;
+} 

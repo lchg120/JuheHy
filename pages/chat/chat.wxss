@@ -1,0 +1,115 @@
+/* pages/chat/chat.wxss */
+ .fiexd{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9;
+  height: 60px;
+}
+/*新消息进来提醒*/
+.new-msg{
+  position:fixed;
+  top:10rpx;
+  left:10rpx;
+  right:10rpx;
+  height:70rpx;
+  line-height: 70rpx;
+  font-size:12px;
+  z-index:99;
+  margin: auto;
+  text-align: center;
+  background: #e8e8e8;
+  border: 1rpx solid #dedede;
+  border-radius: 30rpx;
+  opacity:0.9;
+}
+.main {
+  /* overflow: hidden;
+  overflow-y: scroll; */
+}
+.main-item {
+  position: relative;
+  padding: 35rpx 0;
+  border-bottom: 2rpx solid #aaaaaa;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+.main-item .left {
+  width: 80rpx;
+  height: 80rpx;
+}
+.main-item .content {
+  width: 450rpx;
+  text-align: left;
+}
+.main-item .content text:nth-child(1){
+  display: block;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #000;
+  font-size: 28rpx;
+  font-weight: bold;
+  overflow: hidden;
+}
+.main-item .content text:nth-child(2) {
+  display: block;
+  height: 40rpx;
+  line-height: 40rpx;
+  color: #ababab;
+  font-size: 20rpx;
+  overflow: hidden;
+}
+.main-item .right {
+  position: relative;
+  z-index: 0;
+  width: 100rpx;
+  height: 100rpx;
+  font-size: 22rpx;
+  color: #7e7e7e;
+}
+.main-item-text {
+  font-weight: bold;
+}
+.main-item-time {
+  position: relative;
+  z-index: 1;
+  width: 40rpx;
+  height: 40rpx;
+}
+.main-item-timeBg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  transform: rotate(45deg);
+}
+
+.redPoint {
+  position: absolute;
+  top: 0;
+  left: 90rpx;
+  bottom: 0;
+  z-index: 0;
+  margin: auto;
+  width: 20rpx;
+  height: 20rpx;
+}
+.redPoint-bg {
+  background-color: red;
+}
+
+.canvas {
+  position:absolute;
+  display: block;
+  top: 30rpx;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  z-index: 0;
+  width: 40px;
+  height: 40px;
+}

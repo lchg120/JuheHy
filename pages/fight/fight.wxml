@@ -1,0 +1,96 @@
+<!--pages/fight/fight.wxml-->
+<!--新消息进来提醒-->
+<view class='new-msg' data-current="{{new_msgtid}}" bindtap="newmsg_clik" hidden='{{new_msgshow}}'>您有新消息进来</view>
+<view class='w100 h100 bg' style='background-image: url({{imagesBaseUrl}}fight/fight_bg.png); overflow:hidden;'>
+  <!--公共顶部-->
+  <view class='navHead fiexd row space-b center-Y'>
+    <button class='left bg round' style='background-image: url({{userdata.avatarUrl}});'  bindtap='btn_user_clicked' open-type="getUserInfo" lang="zh_CN"></button> 
+    <view class='content w70 row space-b'>
+      <button bindgetuserinfo="click_nav" data-url="{{item.url}}" class="navHead-item w25 pad-TB10 center center2 center-I {{item.active?'active':''}}"  wx:for="{{navHead}}" wx:key="" data-item="{{item}}" data-index="{{index}}" open-type="getUserInfo" lang="zh_CN"> 
+        {{item.text}} 
+        <view class='line' animation="{{headAni}}"></view>
+      </button>
+    </view>
+    <button class='right bg' style='background-image: url({{imagesBaseUrl}}common/userAdd.png);' bindtap='btn_add_clicked' open-type="getUserInfo" lang="zh_CN"></button>
+  </view>
+
+  <!--主体-->
+  <view class='main'>
+    <!--匹配按钮背景动画end-->
+    <view class='top' hidden='{{userKeyNull}}'>
+      <view class='top-keyText'>最近匹配的人</view> 
+      <view class='userBox w100 h100'>
+        <swiper class='h100' display-multiple-items="4">
+          <swiper-item class="column" wx:for="{{userKey}}" wx:key="" hidden="{{item.dataDel}}" bindtap='btn_headShow_clicked' bindlongtap='btn_headShow_longtap' data-i="{{index}}" data-item="{{item}}" >
+              <view class='user-item h100 mar-LR20'>
+                  <button class='round-20' hidden='{{item.show}}' bindtap='btn_delData_clicked' data-i="{{index}}" data-item="{{item}}">删除</button>
+                  <view class='icon-triangle' hidden='{{item.show}}'></view>
+                  <view class='user-item-head bg' style='background-image: url({{item.headImg}});'></view>
+                  <view class='row center-X center-Y'>
+                    <view class='user-item-name row'><text>{{item.name}}</text><text class='user-item-sex pad-LR10'>{{item.sex}}</text></view>
+                  </view>
+                  <view class='user-item-record center-X round-20'>胜{{item.sheng}}负{{item.fu}}</view>
+              </view>
+          </swiper-item>
+        </swiper>
+      </view>
+    </view> 
+    <view class='main-box'>
+      <view class='userNum center-X center-line'>
+        <text  animation='{{userNumAni}}'>{{userNum}}</text>对
+      </view>
+      <text class='con center-X'>正在一起玩</text>
+      <!--匹配按钮背景动画start-->
+      <form bindreset="ssss" bindsubmit="click_match" reportSubmit="true">
+        <view class='btn-bgBox round'>
+          <button formType="submit" class='btn-start bg round' style='background-image: url({{imagesBaseUrl}}fight/btn_fight.png);'></button>
+          <view class='btn-bg w100 h100 center-posi round ani1'></view>
+          <view class='btn-bg w100 h100 center-posi round ani2'></view>
+          <view  class='btn-bg w100 h100 center-posi round ani3'></view>
+        </view>
+      </form>
+      <view class='box'>
+        <view class='random'>
+          <view class="random-item center-X center-Y {{userKeyNull? ' ': ' active'}}" wx:for="{{fight}}" wx:key="" data-index="{{index}}" data-item="{{item}}">
+            <view class='random-item-data user row center-Y start-X' animation="{{item.leftAni}}">
+              <view class='head bg round' style='background-image: url({{item.headImg1}});'></view>
+              <view class='name center-line end-X ellipsis-1'>{{item.name1}}</view>
+            </view>
+            <view class='random-item-data other row center-Y'  animation="{{item.rightAni}}">
+              <view class='name center-line start-X ellipsis-1'>{{item.name2}}</view>
+              <view class='head bg round' style='background-image: url({{item.headImg2}});'></view>
+            </view> 
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--底部按钮-->
+  <view class='foot' hidden='{{true}}'>
+    <button class='state w60 pad-TB10 center-X center-Y center-line' bindtap='btn_maskShow_clicked'>
+      <text>筛选条件：{{screen.sex}} | {{screen.age}}</text>
+      <text class='btn-state bg center-I' style='background-image: url({{imagesBaseUrl}}fight/icon_fight_btn_state.png);'></text>
+    </button>
+  </view>
+
+  <!--弹窗层-->
+  <view class='mask' hidden='{{maskHidden}}'>
+    <view class='maskBox pad-LR20 round-20'>
+      <view class='maskBox-title center-X pad-TB20'>筛选条件</view>
+      <view class='maskBox-item pad-LR20 mar-TB10'>
+        <view class='title pad-TB10'>性别</view>
+        <view class='subBox row round-10 space-b'>
+          <button class='subBox-item w100 h100 center-X center-Y {{item.active? " active": " "}}' wx:for="{{sex}}" wx:key="" data-i="{{index}}" data-item="{{item}}" catchtap='btn_sex_clicked'>{{item.text}}</button>
+        </view>
+      </view>
+      <view class='maskBox-item pad-LR20 mar-TB10'>
+        <view class='title pad-TB10'>年龄</view>
+        <view class='subBox row round-10 space-b'>
+          <button class='subBox-item w100 h100 center-X center-Y {{item.active? " active": " "}}' wx:for="{{age}}" wx:key="" data-i="{{index}}" data-item="{{item}}"  catchtap='btn_age_clicked'>{{item.text}}</button>
+        </view>
+      </view>
+      <button class='maskBox-btn w70 pad-TB10 center-X' catchtap='btn_maskHidden_clicked'>确定</button>
+    </view>
+  </view>
+</view>
+

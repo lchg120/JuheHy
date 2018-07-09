@@ -1,0 +1,47 @@
+<!--pages/index/index.wxml-->
+<form bindreset="ssss" bindsubmit="click_form" reportSubmit="true">
+
+
+
+<!--新消息进来提醒-->
+<view class='new-msg' data-current="{{new_msgtid}}" bindtap="newmsg_clik" hidden='{{new_msgshow}}'>您有新消息进来</view>
+<!--公共顶部start-->
+<view class='navHead fiexd row space-b center-Y'>
+  <button formType="submit" class='left bg round' style='background-image: url({{userdata.avatarUrl}});'  bindtap='btn_user_clicked' open-type="getUserInfo" lang="zh_CN"></button> 
+  <view class='content w70 row space-b'>
+    <button formType="submit" bindgetuserinfo="click_nav" data-url="{{item.url}}" class="navHead-item w25 pad-TB10 center center2 center-I {{item.active?'active':''}}"  wx:for="{{navHead}}" wx:key="" data-item="{{item}}" data-index="{{index}}" open-type="getUserInfo" lang="zh_CN"> 
+       {{item.text}} 
+      <view class='line' animation="{{headAni}}"></view>
+    </button> 
+  </view>
+  <button formType="submit" class='right bg' style='background-image: url({{imagesBaseUrl}}common/userAdd.png);' bindgetuserinfo='btn_add_clicked' open-type="getUserInfo" lang="zh_CN"></button>
+</view>
+
+<!--广告-->
+<view class='banner center-X'>
+  <button formType="submit" class='w100 h100 bg' style='background-image: url({{imagesBaseUrl}}index/banner.png);'></button>
+</view> 
+
+<!--导航-->
+<view class='nav row space-a pad-TB20'>
+  <button formType="submit" bindgetuserinfo="click_sec_nav" hidden='{{item.hide}}' wx:for="{{nav}}" wx:key="" data-i="{{index}}" data-item="{{item}}"  data-url="{{item.url}}" class='column center-X w25'
+  open-type="getUserInfo" lang="zh_CN">
+    <view class='nav-img center-I'><image  src='{{imagesBaseUrl}}{{item.bg}}'></image></view>
+    <view class='nav-text center-I'>{{item.text}}</view>
+  </button>
+</view> 
+
+<!--主体内容-->
+<view class='main row wrap'> 
+  <button formType="submit" data-gid="{{item.gid}}" class='main-item round-10 column' wx:for="{{main}}" wx:key="" data-item="{{item}}" data-index="{{index}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="click_game">
+     <view class='main-item-img w100'><image src='{{item.bg}}'></image></view> 
+    <view class='main-item-content column pad-TB10'>
+      <text class='center-I'>{{item.text}}</text>
+      <text class='center-I'>{{item.num}}对正在玩</text>
+    </view>
+  </button>
+</view> 
+
+
+
+</form>

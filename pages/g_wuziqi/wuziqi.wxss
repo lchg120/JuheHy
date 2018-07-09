@@ -1,0 +1,294 @@
+/**index.wxss**/
+page {
+  background: #000000;
+  overflow: hidden;
+}
+.user-vs {
+  position: relative;
+  font-size: 30rpx;
+  color: #fff;
+  height: 260rpx;
+}
+.tips {
+  width: 40rpx;
+  height: 40rpx;
+  background-color: #ff7e00;
+  background-size: 75% 75%;
+  background-position: 50% 50%;
+}
+
+.userHead, .otherHead {
+  width: 100rpx;
+  height: 100rpx;
+  overflow: hidden;
+}
+.userHead {
+  border: 8rpx solid #3fc2ff;
+}
+.otherHead {
+  border: 8rpx solid #ff3f87;
+}
+
+.userHuihe, .otherHuihe {
+  position: absolute;
+  top: 44rpx;
+  z-index: 1;
+  width: 200rpx;
+  height: 70rpx;
+  vertical-align: bottom;
+}
+.userHuihe {
+  left: 150rpx;
+}
+.otherHuihe {
+  right: 150rpx;
+}
+
+.userName, .otherName {
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  background: rgba(0,0,0,0.5);
+}
+.userName {
+  text-align: left;
+}
+.otherName {
+  text-align: right;
+}
+
+
+
+
+.game-yuan {
+  position: absolute;
+  width: 50rpx;
+  height: 50rpx;
+  background:  red;
+}
+.infoBox-time {
+  width: 140rpx;
+  height: 50rpx;
+  line-height: 25rpx;
+  font-size: 24rpx;
+  text-align: center;
+}
+.infoBox-time-width {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 10rpx;
+  background-image: -webkit-linear-gradient(left, #ff2800, yellow, #00ff00);  
+  background-image: linear-gradient(90deg, #ff2800, yellow, #00ff00); 
+  overflow: hidden;
+}
+.infoBox-time-icon {
+  width: 100%;
+  height: 100%;
+  background: #fff; 
+}
+
+.btnBox {
+  margin: 30rpx auto 0;
+  height: 60rpx;
+  color: #000;
+}
+.btn-back, .btn-sum, .btn-lose, .btn-confirm {
+  width: 167.5rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  margin: 10rpx;
+  font-size: 32rpx;
+  -webkit-border-radius: 20rpx;
+  border-radius: 20rpx;
+}
+
+.mask-con {
+  width: 500rpx;
+  height: 500rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  text-align: justify;
+  color: #333;
+  background: #fff;
+}
+.mask-con .font-red {
+  color: red;
+}
+.mask-bg {
+  width: 300rpx;
+  height: 280rpx;
+  margin: 20rpx auto;
+}
+
+/* .btn-back {
+  background: #ff2800;
+}
+.btn-lose {
+  background: gray ;
+}
+.btn-confirm {
+  background: green;
+} */
+
+/* .confirm-loading {
+  position: absolute;
+  bottom: 25rpx;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  margin: auto;
+  width: 300rpx;
+  height: 60rpx;
+  color: #000;
+  overflow: hidden;
+  background: #ccc;
+} */
+
+
+/*匹配到对手*/
+.matchViewBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  overflow: hidden;
+  background: #000000;
+  color: #fff;
+}
+.headPic {
+  width: 180rpx; 
+  height: 180rpx;
+  border: 6rpx solid rgba(250, 250, 250, .9)
+}
+.extra{
+  width:180rpx; 
+  font-size: 28rpx;
+}
+
+.matchUserLeft{ 
+  position: absolute; 
+  left: -110%; 
+  top: 80rpx; 
+  height: 555rpx;
+} 
+.userinfoLeft{
+  position:absolute; 
+  right:40rpx; 
+  top:180rpx;
+}
+.matchUserLeft .headPic {
+  position: relative;
+  background: #ff3f87;
+}
+
+.matchUserRight{ 
+  position: absolute; 
+  right: -110%; 
+  top: 506rpx; 
+  height: 555rpx;
+}
+.userinfoRight{
+  position:absolute; 
+  left:70rpx; 
+  top:180rpx;
+}
+.userinfoRight .headPic {
+  position: relative;
+  background: #3fc2ff;
+}
+
+.headPic .user-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+.extra .user-name {
+  margin-top:26rpx;
+}
+.extra .user-lv {
+  font-weight:bold
+}
+
+.item-head-item {
+  width: 24rpx;
+  height: 24rpx;
+  background-color: gray;
+  background: #000;
+  opacity: 0.3;
+}
+
+.view-game{
+  position: relative;
+  z-index: 9
+}
+.gameBox {
+  position: absolute;
+  top: 108px;
+  right: 0;
+  left: 0;
+  margin: auto;
+  z-index: 1;
+  width: 750rpx;
+  height: 890rpx;
+}
+.title {
+  height: 40rpx;
+  padding-top: 40rpx;
+}
+.title-bg {
+  width: 40rpx;
+  height: 40rpx;
+}
+.title-text {
+  padding: 0 30rpx;
+  font-size: 30rpx;
+  color: #5f261a;
+  font-weight: bold;
+}
+
+.old-qizi, .move-qizi{
+  position: absolute;
+  z-index: 19;
+  width: 25px;
+  height: 25px;
+  background-size: 25px 25px;
+}
+.move-qizi.btnRed {
+  -webkit-box-shadow: 0 0 80rpx #f51238;
+  animation: btnRed 1s infinite;
+}
+@-webkit-keyframes btnRed {
+  0% { -webkit-box-shadow: 0 0 40rpx #0338fd; }
+  50% { -webkit-box-shadow: 0 0 80rpx #f51238; }
+  100% { -webkit-box-shadow: 0 0 40rpx #0338fd; }
+}
+
+
+
+.draw-qizi{
+  position: absolute;
+  z-index: 9;
+  width: 25px;
+  height: 25px;
+  background-size: 25px 25px;
+}
+
+
+
+.table {
+  border:1px solid #561a00;
+  border-right: 0;
+  border-bottom: 0;
+}
+.tr {
+  /* width: 100%; */
+  display: flex;
+  
+}
+.td {
+  border-bottom: 1px solid #561a00;
+  border-right: 1px solid #561a00;
+}

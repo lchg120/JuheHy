@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/start/start",
+    "pages/index/index",
+    "pages/fight/fight",
+    "pages/chat/chat",
+    "pages/online/online",
+    "pages/match/match",
+    "pages/user/user",
+    "pages/userEdit/userEdit",
+    "pages/other/other",
+    "pages/friend/index",
+    "pages/friend/friend",
+    "pages/ranking/ranking",
+    "pages/invite/invite",
+    "pages/playGame/playGame",
+    "pages/g_cycd/cycd",
+    "pages/g_lianliankan/g_lianliankan",
+    "pages/g_wuziqi/wuziqi",
+    "pages/g_doushouqi/doushouqi",
+    "pages/g_chuiniu/chuiniu"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#8435f3",
+    "navigationBarTitleText": "游戏聚合平台",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": false
+  },
+  "entryPagePath": "pages/start/start"
+}

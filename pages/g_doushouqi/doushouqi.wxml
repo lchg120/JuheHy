@@ -1,0 +1,151 @@
+<!--pages/g_doushouqi/doushouqi.wxml-->
+<view class='doushouqi w100 h100 bg' style="background-image: url('../../images/g_doushouqi/g_dsq_bg.jpg')">
+  <view class='pad-TRBL20'>
+    <!--顶部用户信息-->
+    <view class='top bg row space-b' style="background-image: url('../../images/g_doushouqi/g_dsq_top.png')">
+      <view class='user mar-TB10 row'>
+        <view class='header round'>
+        </view>
+        <view class='name pad-LR20 round-20 ellipsis-1'>我的名字</view>
+         <view class='huihe bg' hidden='{{true}}' style="background-image: url('../../images/g_doushouqi/huiheBG_user.png')">
+          <view class='huihe-time h100 end-X center-Y'>你的回合<text class='pad-LR10'>24</text>S</view>
+        </view> 
+      </view>
+      <view class='other mar-TB10 row'>
+        <view class='huihe bg' hidden='{{false}}' style="background-image: url('../../images/g_doushouqi/huiheBG_other.png')">
+          <view class='huihe-time h100 start-X center-Y'>对手的回合<text class='pad-LR10'>24</text>S</view>
+        </view>
+        <view class='name pad-LR20 round-20 ellipsis-1'>对手名字</view>
+        <view class='header round'></view>
+      </view>
+    </view>
+    <view class='help space-a row'>
+      <button class='help-btn bg round' style="background-image: url('http://juhe_cdn.shouyo.com/images/game/lianliankan/icon_help.png')"></button>
+      <button class='lose-btn bg' style="background-image: url('../../images/g_doushouqi/g_dsp_sum.png')"></button>
+      <button class='sum-btn bg' style="background-image: url('../../images/g_doushouqi/g_dsp_lose.png')"></button>
+    </view>
+    <!--游戏区域--> 
+    <view class='game w80 bg row wrap space-b' style="background-image: url('../../images/g_doushouqi/g_dsq_btn.png')">
+      <view class='game-item'>
+        <view class='game-item-line'>
+            <view class='game-item-bottom'></view>
+            <view class='game-item-box bg' style="background-image: url('../../images/g_doushouqi/g_dsq_dan.png')"></view>
+            <view class='game-item-name round'>待</view>
+        </view>
+      </view>
+      <view class='game-item user active'>
+        <view class='game-item-line'>
+            <view class='game-item-bottom'></view>
+            <view class='game-item-box bg' style="background-image: url('../../images/g_doushouqi/g_dsq_id1.png')">
+            </view>
+            <view class='game-item-name round'>鼠</view>
+            <view class='game-item-direction w100 h100'>
+              <view class='direction-top icon-triangle'></view>
+            </view>
+        </view>
+      </view>
+      <view class='game-item user'>
+        <view class='game-item-line'>
+            <view class='game-item-bottom'></view>
+            <view class='game-item-box bg' style="background-image: url('../../images/g_doushouqi/g_dsq_id2.png')"></view>
+            <view class='game-item-name round'>猫</view>
+        </view>
+      </view>
+      <view class='game-item user'>
+        <view class='game-item-line'>
+            <view class='game-item-bottom'></view>
+            <view class='game-item-box bg' style="background-image: url('../../images/g_doushouqi/g_dsq_id3.png')"></view>
+            <view class='game-item-name round'>狗</view>
+        </view>
+      </view>
+      <view class='game-item user'>
+        <view class='game-item-line'>
+            <view class='game-item-bottom'></view>
+            <view class='game-item-box bg' style="background-image: url('../../images/g_doushouqi/g_dsq_id4.png')"></view>
+            <view class='game-item-name round'>狼</view> 
+        </view>
+      </view>
+      <view class='game-item user'>
+        <view class='game-item-line'>
+            <view class='game-item-bottom'></view>
+            <view class='game-item-box bg' style="background-image: url('../../images/g_doushouqi/g_dsq_id5.png')"></view>
+            <view class='game-item-name round'>豹</view>
+        </view>
+      </view>
+      <view class='game-item user'>
+        <view class='game-item-line'>
+            <view class='game-item-bottom'></view>
+            <view class='game-item-box bg' style="background-image: url('../../images/g_doushouqi/g_dsq_id6.png')"></view>
+            <view class='game-item-name round'>虎</view>
+        </view>
+      </view>
+      <view class='game-item user'>
+        <view class='game-item-line'>
+            <view class='game-item-bottom'></view>
+            <view class='game-item-box bg' style="background-image: url('../../images/g_doushouqi/g_dsq_id7.png')"></view>
+            <view class='game-item-name round'>狮</view>
+        </view>
+      </view>
+      <view class='game-item user'>
+        <view class='game-item-line'>
+            <view class='game-item-bottom'></view>
+            <view class='game-item-box bg' style="background-image: url('../../images/g_doushouqi/g_dsq_id8.png')"></view>
+            <view class='game-item-name round'>象</view>
+        </view>
+      </view>
+      <view class='game-item'>
+        <view class='game-item-line'>
+            <view class='game-item-bottom'></view>
+            <view class='game-item-box bg' style="background-image: url('../../images/g_doushouqi/g_dsq_dan.png')"></view>
+            <view class='game-item-name round'>待</view>
+        </view>
+      </view>
+      <view class='game-item other'>
+        <view class='game-item-line'>
+            <view class='game-item-bottom other'></view>
+            <view class='game-item-box bg' style="background-image: url('../../images/g_doushouqi/g_dsq_id4.png')"></view>
+            <view class='game-item-name round'>狼</view>
+        </view>
+      </view>
+      <view class='game-item other'>
+        <view class='game-item-line'>
+            <view class='game-item-bottom other'></view>
+            <view class='game-item-box bg' style="background-image: url('../../images/g_doushouqi/g_dsq_id5.png')"></view>
+            <view class='game-item-name round'>豹</view> 
+        </view>
+      </view>
+      <view class='game-item other'>
+        <view class='game-item-line'>
+            <view class='game-item-bottom other'></view>
+            <view class='game-item-box bg' style="background-image: url('../../images/g_doushouqi/g_dsq_id6.png')"></view>
+            <view class='game-item-name round'>虎</view>
+        </view>
+      </view>
+      <view class='game-item other'>
+        <view class='game-item-line'>
+            <view class='game-item-bottom other'></view>
+            <view class='game-item-box bg' style="background-image: url('../../images/g_doushouqi/g_dsq_id7.png')"></view>
+            <view class='game-item-name round'>狮</view>
+        </view>
+      </view>
+      <view class='game-item other'>
+        <view class='game-item-line'>
+            <view class='game-item-bottom other'></view>
+            <view class='game-item-box bg' style="background-image: url('../../images/g_doushouqi/g_dsq_id8.png')"></view>
+            <view class='game-item-name round'>象</view>
+        </view>
+      </view>
+      <view class='game-item'>
+        <view class='game-item-line'>
+            <view class='game-item-bottom'></view>
+            <view class='game-item-box bg' style="background-image: url('../../images/g_doushouqi/g_dsq_dan.png')"></view>
+            <view class='game-item-name round'>待</view>
+        </view>
+      </view>
+    </view>
+    <!--底部提示信息-->
+    <view class='tips w90 pad-LR20'>
+      <view class='tips-bg w90 h100 bg'  style="background-image: url('../../images/g_doushouqi/g_dsq_tips.png')"></view>
+    </view>
+  </view>
+</view>

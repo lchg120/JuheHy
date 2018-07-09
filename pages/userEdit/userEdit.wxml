@@ -1,0 +1,64 @@
+<!--pages/userEdit/userEdit.wxml-->
+<view class='viewBg'>
+  <view class='nav center-X'>
+    <view class='nav-title center-Y'>编辑资料</view>
+    <view class='btn center-Y'><button class='btn-text center-Y pad-TRBL10 round-10' bindtap='btn_save_clicked'>保存</button></view>
+  </view>
+  <view class='page-banner row wrap space-b'>
+    <button class='banner w30 mar-TB10 bg' style='background-image: url({{imagesBaseUrl}}common/img_bg.png);'>
+    </button>
+    <button class='banner w30 mar-TB10 bg' style='background-image: url({{imagesBaseUrl}}common/icon_add.png);'>
+    </button>
+    <button class='banner w30 mar-TB10 bg' style='background-image: url({{imagesBaseUrl}}common/icon_add.png);'>
+    </button>
+    <button class='banner w30 mar-TB10 bg' style='background-image: url({{imagesBaseUrl}}common/icon_add.png);'>
+    </button>
+    <button class='banner w30 mar-TB10 bg' style='background-image: url({{imagesBaseUrl}}common/icon_add.png);'>
+    </button>
+    <button class='banner w30 mar-TB10 bg' style='background-image: url({{imagesBaseUrl}}common/icon_add.png);'>
+    </button>
+    <view class='text pad-TB10'>长按拖拽更改顺序，点击更换或删除图片</view>
+  </view>
+
+  <view class='info pad-TRBL20'>
+    <button class='info-item row space-b'>
+      <view class='item-l center-Y'>昵称</view>
+      <view class='item-r row center-Y'>
+        <view class='item-r-text'>{{userdata.nickName}}</view>
+        <view class='item-r-img bg' style='background-image:url({{imagesBaseUrl}}common/icon_more.png);'></view>
+      </view>
+    </button>
+    <button class='info-item row space-b'>
+      <view class='item-l center-Y'>性别</view>
+      <view class='item-r row center-Y'>
+        <view class='item-r-text'>{{userdata.sex}}</view>
+        <view class='item-r-img bg' style='background-image:url({{imagesBaseUrl}}common/icon_more.png);'></view>
+      </view>
+    </button>
+    <!-- <button class='info-item row space-b'>
+      <view class='item-l center-Y'>年龄</view>
+      <view class='item-r row center-Y'>
+        <view class='item-r-text'>{{userdata.age}}岁 · {{userdata.star}}</view>
+        <view class='item-r-img bg' style='background-image:url({{imagesBaseUrl}}common/icon_more.png);'></view>
+      </view>
+    </button> -->
+    <button class='info-item row space-b'>
+      <view class='item-l center-Y'>城市</view>
+      <view class='item-r row center-Y'>
+        <view class='item-r-text'>{{userdata.city}}</view>
+        <view class='item-r-img bg' style='background-image:url({{imagesBaseUrl}}common/icon_more.png);'></view>
+      </view>
+    </button>
+  </view>
+
+  <!-- <view class='sign pad-TRBL20 column'>
+    <view class='w100 row center-Y space-b'>
+      <view class='item-l'>个性签名</view>
+      <view class='item-r-img bg' style='background-image:url({{imagesBaseUrl}}common/icon_more.png);'></view>
+    </view>
+    <view class='edit pad-LR20'>
+      <input class='w100' type='text' placeholder='点击这里编辑个性签名' value=''></input>
+    </view>
+    <button class='btn-back w50 pad-TB10 round-20'  bindtap='btn_back_clicked'>返回设置</button>
+  </view> -->
+</view>

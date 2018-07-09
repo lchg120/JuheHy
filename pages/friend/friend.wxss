@@ -1,0 +1,150 @@
+/* pages/friend/friend.wxss */
+/*新消息进来提醒*/
+.new-msg{
+  position:fixed;
+  top:10rpx;
+  left:10rpx;
+  right:10rpx;
+  height:70rpx;
+  line-height: 70rpx;
+  font-size:12px;
+  z-index:5;
+  margin: auto;
+  text-align: center;
+  background: #e8e8e8;
+  border: 1rpx solid #dedede;
+  border-radius: 30rpx;
+  opacity:0.9;
+}
+page {
+  background:#fff;
+}
+.viewBg {
+  background: #fbfbfb;
+}
+.search {
+  border-bottom: 2rpx solid #e8e8e8;
+  background: #fff;
+  overflow: hidden;
+}
+.search .box {
+  -webkit-border-radius: 40rpx;
+  border-radius: 40rpx;
+  background-color: #e8ebf0;
+}
+.search-bg {
+  width: 80rpx;
+  height: 80rpx;
+  background-size: 40rpx 40rpx;
+  background-position:  50% 50%;
+}
+.search-input {
+  font-size:28rpx;
+}
+.search-back {
+  width: 80rpx;
+  height: 80rpx;
+  background-size: 40rpx 40rpx;
+  background-position: 50% 50%;
+}
+.search-back button {
+  background-size: 40rpx 40rpx;
+  background-position: 50% 50%;
+}
+.search-btn {
+  width: 80rpx;
+  height: 80rpx;
+}
+.search-btn button {
+  color: #000;
+  font-size: 30rpx;
+}
+.search-text {
+  height: 80rpx;
+}
+.search-text button {
+  font-size: 32rpx;
+  color: #000;
+}
+
+.userId {
+  height: 80rpx;
+}
+.userId button {
+  font-size: 32rpx;
+  color: #000;
+}
+
+.friend {
+  margin: 30rpx 0;
+  border-top: 2rpx solid #e8e8e8;
+  border-bottom: 2rpx solid #e8e8e8;
+  background: #fff;
+}
+.title {
+  font-size: 32rpx;
+  color: #56585b;
+}
+.friend-icon {
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.list {
+  background: #fff;
+}
+.list-item-head {
+  width: 100rpx;
+  height: 100rpx;
+}
+.list-item-name {
+  width: 480rpx;
+  height: 100rpx;
+  text-indent: 20rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #000;
+}
+.list-item-state {
+  width: 120rpx;
+  height: 100rpx;
+  font-size: 24rpx;
+  color: #b6bec3;
+}
+.list-item-btn {
+  padding: 10rpx 20rpx;
+  font-size: 24rpx;
+  color: #000;
+  background: #fcf308;
+  border: 1px solid #000;
+  overflow: hidden;
+}
+
+.btn-back {
+  margin: 20rpx auto 0;
+  font-size: 28rpx;
+  color: #000;
+  border: 2rpx solid #e8e8e8;
+}
+
+.mask {
+  background: #ffffff;
+}
+.mask .box {
+  background: #eeeeee;
+}
+.mask-search-bg {
+  width: 40rpx;
+  height: 40rpx;
+}
+.mask-search-input {
+  height: 80rpx;
+  font-size: 28rpx;
+
+}
+.mask-search-btn {
+  width: 80rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+  color: #000;
+}

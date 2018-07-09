@@ -1,0 +1,6 @@
+<!--pages/invite/invite.wxml-->
+<view class='main w100 h100 bg' style='background-image: url({{imagesBaseUrl}}invite/invite_bg.png)'>
+  <form name='pushMsgFm' report-submit bindsubmit='getformId'>
+  <button open-type='share' form-type='submit' class='btn-invite-wx bg' style='background-image: url({{imagesBaseUrl}}common/btn_weixin_red.png)'></button>
+  </form>
+</view>

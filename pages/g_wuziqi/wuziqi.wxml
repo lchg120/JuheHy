@@ -1,0 +1,94 @@
+<!--index.wxml-->
+<view class='page h100 w100 bg' style="background-image: url('{{imagesBaseUrl}}game/g_wuziqi/bg.png')">
+  <view class='user-vs pad-TRBL20'>
+    <view class='space-b'>
+      <view class='userHead bg round' style='background-image: url({{leftview.userinfo.avatar}});'></view>
+      <view class='otherHead bg round' style='background-image: url({{rightview.userinfo.avatar}});'></view>
+    </view>
+    <view class='space-b mar-TB10'>
+      <view class='userName w40 pad-LR20 round-20 ellipsis-1'>{{leftview.userinfo.name}}</view>
+      <view class='userHuihe bg pad-LR20 end-X center-Y' wx:if='{{userHuihe}}' style="background-image: url('{{imagesBaseUrl}}game/g_wuziqi/bg_user.png')">自己回合  {{gameTime}}  S</view>
+      <view class='tips mar-LR20 bg round' catchtap='click_tips_show' style="background-image: url('{{imagesBaseUrl}}game/g_wuziqi/icon_help.png')"></view>
+      <!-- <view class='infoBox-time mar-LR20 center-X column'>
+        <view class='infoBox-time-width round-20'>
+          <view class='infoBox-time-icon' style='margin-left: {{gameTimeWidth}}%;'></view>
+        </view>
+        <view>
+          <text wx:if="{{gameTime>0}}">剩余{{gameTime}}秒</text>
+          <text wx:else>回合结束</text>
+        </view>
+      </view> -->
+      <view class='otherName w40 pad-LR20 round-20 ellipsis-1'>{{rightview.userinfo.name}}</view>
+      <view class='otherHuihe bg pad-LR20 start-X center-Y' wx:if='{{otherHuihe}}' style="background-image: url('{{imagesBaseUrl}}game/g_wuziqi/bg_other.png')">对手回合  {{gameTime}}  S</view>
+    </view>
+  </view>
+  <view class='view-game bg pad-TRBL20' style='width:{{uiwidth-20}}px;height:{{uiwidth}}px;' catchtouchmove='changeTouchMove' catchtouchstart='touchStart' catchtouchend='touchEnd'>
+    <view wx:if="{{movepointImg.color != ''}}" class='move-qizi btnRed round' hidden='{{movepointImg.hidden}}' style='background-image: url({{imagesBaseUrl}}game/wuziqi/{{movepointImg.color}}.png);left:{{movepointImg.left}}px;top:{{movepointImg.top}}px;'>
+    </view>
+    <view class='draw-qizi' wx:for="{{draw}}" wx:key="" style='background-image: url({{imagesBaseUrl}}game/wuziqi/{{item.color}}.png);left:{{item.x-0.8}}px;top:{{item.y-0.8}}px;'></view>
+    <view class="table" style='width:{{uiwidth-20}}px;height:{{gzwh*13+13}}px;'>
+      <view class="tr" wx:for="{{13}}" wx:key="">
+          <view class="td" style='width: {{gzwh}}px;height: {{gzwh}}px;' wx:for="{{13}}" wx:key=""></view>
+      </view>
+    </view>
+  </view>
+  <view class='gameBox bg' style="background-image: url('{{imagesBaseUrl}}game/g_wuziqi/bg_qipan.png')">
+    <view class='title row center-X center-Y'>
+      <view class='title-bg bg' style="background-image: url('{{imagesBaseUrl}}game/g_wuziqi/qi_{{colorMy}}.png')"></view>
+      <view class='title-text'>长按落子  拖动移动位置</view>
+      <view class='title-bg bg' style="background-image: url('{{imagesBaseUrl}}game/g_wuziqi/qi_{{colorVs}}.png')"></view>
+    </view> 
+  </view>
+
+
+  <view class='btnBox row space-a'>
+    <button class='btn-back bg' bindtap="changeUndo" style="background-image: url('{{imagesBaseUrl}}game/g_wuziqi/btn_1.png')">悔棋</button>
+    <button class='btn-lose bg' bindtap='click_back'  style="background-image: url('{{imagesBaseUrl}}game/g_wuziqi/btn_3.png')">认输</button>
+    <button class='btn-confirm bg'  wx:if="{{confIsdisabled == false}}"  bindtap='confirm'  style="background-image: url('{{imagesBaseUrl}}game/g_wuziqi/btn_{{btnState?'4':'2'}}.png')"> 
+      <text wx:if="{{btnState}}">确认下棋</text>
+      <text hidden="{{btnState}}">移动棋子</text> 
+    </button>
+  </view>
+</view>
+
+
+
+<!--匹配到对手-->
+<view class='column start w100 h100 matchViewBox' hidden='{{matchViewBox.isHide}}'>
+  <view class='matchUserLeft w100' animation="{{matchViewBox.matchViewLeftAni}}">
+      <image class='w100 h100 bg' src='{{imagesBaseUrl}}game/cycd/new_move/fight/left-in.png'></image>
+      <view class='userinfoLeft'>
+          <view class='headPic round'>
+              <view class='user-img w100 h100 bg round'  style='background-image: url({{leftview.userinfo.avatar}});'></view> 
+          </view>
+          <view class='extra column center-X center-Y'>
+              <view class='user-name center-X w100'>{{leftview.userinfo.name}}</view>
+          </view>
+      </view>
+  </view>
+  <view class='matchUserRight w100 h100' animation="{{matchViewBox.matchViewRightAni}}">
+      <image class='w100 h100 bg' src='{{imagesBaseUrl}}game/cycd/new_move/fight/right-in.png'></image>
+      <view class='userinfoRight'>
+          <view class='headPic row center-Y space-a round'> -->
+              <!--头像加载背景start-->
+               <view class='item-head-item round' animation='{{headBgAni1}}'></view>
+              <view class='item-head-item round' animation='{{headBgAni2}}'></view>
+              <view class='item-head-item round' animation='{{headBgAni3}}'></view>  
+              <!--头像加载背景end-X-->
+              <view class='user-img w100 h100 bg round'  style='background-image: url({{rightview.userinfo.avatar}});'></view> 
+          </view>
+          <view class='extra column center-X center-Y'>
+              <view class='user-name center-X w100'>{{rightview.userinfo.name}}</view>
+          </view>
+      </view>
+  </view>
+</view> 
+
+
+<!--提示窗口-->
+<view class='mask' hidden='{{tipsHide}}' catchtap='click_tips_hide'>
+  <view class='mask-con center-posi round-20 pad-TRBL20'>
+    <view class='mask-text'>在一块类似围棋的棋盘上，和对手轮流放下<text class='font-red'>黑白棋子</text>，无论是<text class='font-red'>横竖</text>还是<text class='font-red'>斜</text>，只要有<text class='font-red'>5颗相同颜色</text>的棋子<text class='font-red'>连成一线</text>即可获得一局胜利。</view>
+    <view class='mask-bg bg' style="background-image: url('{{imagesBaseUrl}}game/g_wuziqi/bg_tips.png')"></view>
+  </view>
+</view>

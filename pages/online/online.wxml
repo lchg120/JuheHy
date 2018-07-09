@@ -1,0 +1,387 @@
+<!--pages/online/online.wxml-->
+<!--新消息进来提醒-->
+<view class='new-msg' data-current="{{new_msgtid}}" bindtap="newmsg_clik" hidden='{{new_msgshow}}'>您有新消息进来</view>
+<!--顶部-->
+<view class='onlineTop row center-Y' hidden='{{addFriend.ifHide}}' id='top'>
+  <button class='left bg round' style='background-image: url({{otherdata.avatarUrl}});' data-current="{{otherdata.uid}}" bindtap='click_other_friend'></button>
+  <view class='box column pad-LR20'>
+    <view class='user-name'>{{otherdata.nickName}}</view>
+    <view class='user-data row'>
+      <view class='user-data-sex'>{{otherdata.sex}}</view>
+      <view><!--  · {{otherdata.age}} · {{otherdata.star}} --> | {{otherdata.city}}</view>
+    </view>
+  </view>
+  <view class='right round-20'>
+    <button wx:if="{{addFriend == false}}" bindtap='click_add_friend'>+好友</button>
+  </view> 
+</view>  
+
+<!--主体内容 1:195;1:37;3:277-->
+<scroll-view id='scroll' scroll-y="true" style="height:{{uiheight - topHeight - footHeight}}px;" scroll-top="{{mainHeight}}" data-scroll="{{mainHeight}}"> 
+  <view class='main w100' style='height:{{mainHeight}}px;' id='main' >
+    <view class='mar-TB20' wx:for="{{talk_data}}" wx:key="" wx:for-index="ikey" wx:for-item="itemtk">
+      <view wx:if="{{itemtk.talk_type == 1}}">
+        <!--时间框start-->
+        <view class='timeBox pad-TB20'>{{itemtk.timeformat}}</view>
+        <!--时间框end-->
+        <view style='height:40rpx;'></view>
+        <!--对战框start-->
+        <view class='pveBox'>
+          <view class='pve column w80 round-20'>
+            <view class='head center-I row'>
+              <view class='item round bg' style="background-image: url('{{userdata.avatarUrl}}')"></view>
+              <view class='vs pad-LR10'>vs</view>    
+              <view class='item round bg' style="background-image: url('{{otherdata.avatarUrl}}')"></view>
+            </view>
+            <view class='pve-content column w100'>
+              <text class='center-I'>一起聊天玩游戏吧~~</text>
+              <text class='center-I'>我们都爱玩的小游戏</text>
+              <block wx:for="{{itemtk.data}}" wx:key="index" wx:for-item="itm">
+                <view wx:if="{{itm.uid == userdata.uid}}" class='gameNav row space-a'>
+                    <button wx:for="{{itm.ofen_play}}" wx:key="index" wx:for-item="it" class='gameNav-btn round-20 bg' style="background-image: url('{{it.img_path}}')" data-current="{{it.gid}}" bindtap="click_game"></button>
+                </view>
+              </block>
+            </view>
+          </view>
+        </view>
+        <!--对战框end-->
+      </view>
+    
+      <view wx:if="{{itemtk.talk_type == 2}}">
+        <!--自己聊天框start-->
+        <view class='chatBox pad-LR20' wx:if="{{itemtk.uid == userdata.uid}}">
+          <view class='item row mar-TB20'>
+            <view class='item-head bg round' style="background-image: url('{{userdata.avatarUrl}}')"></view>
+            <block wx:if="{{itemtk.isbq == 1}}">
+              <view class='item-con round-20 center-Y'>
+                <block wx:for="{{itemtk.data}}" wx:key="" wx:for-item="val">
+                  <block wx:if="{{val.istrue == 1}}">
+                    <image class='emij' style='width:50rpx;height:50rpx;' src='{{val.data}}'></image>
+                  </block>
+                  <block wx:else>
+                    <text class='emij'>{{val.data}}</text>
+                  </block>
+                  <view style='clrea:both;'></view>
+                </block>
+                <view class='icon-triangle'></view>
+              </view>
+            </block>
+            <block wx:else>
+              <view class='item-con round-20 center-Y'>{{itemtk.data}}<view class='icon-triangle'></view></view>
+            </block>
+          </view>
+        </view>
+        <!--自己聊天框end-->
+        <!--对手聊天框start-->
+        <view class='chatBox other pad-LR20' wx:else>
+          <view class='item mar-TB20'>
+            <view class='item-head bg round' style="background-image: url('{{otherdata.avatarUrl}}')"></view>
+            <block wx:if="{{itemtk.isbq == 1}}">
+              <view class='item-con round-20 center-Y'>
+                <block wx:for="{{itemtk.data}}" wx:key="" wx:for-item="val">
+                  <block wx:if="{{val.istrue == 1}}">
+                    <image class='emij' style='width:50rpx;height:50rpx;' src='{{val.data}}'></image>
+                  </block>
+                  <block wx:else>
+                    <text class='emij'>{{val.data}}</text>
+                  </block>
+                  <view style='clrea:both;'></view>
+                </block>
+                <view class='icon-triangle'></view>
+              </view>
+            </block>
+            <block wx:else>
+              <view class='item-con round-20 center-Y'>{{itemtk.data}}<view class='icon-triangle'></view></view>
+            </block>
+          </view>
+        </view>
+        <!--对手聊天框end-->
+      </view>
+      <view wx:if="{{itemtk.talk_type == 3}}">
+        <!--游戏框start-->
+        <view class='timeBox pad-TB20'>{{itemtk.timeformat}}</view>
+        <block wx:if="{{itemtk.uid == userdata.uid}}">
+          <block wx:for="{{itemtk.data}}" wx:key="index" wx:for-item="ite">
+            <block wx:if="{{ite.uid == userdata.uid}}">
+              <view wx:if="{{ite.talk_game_status == 1 || ite.talk_game_status == 2}}" class='gameBox pad-LR20 sheng'>
+                <view class='item row pad-TB20'>
+                  <view class='item-head bg round' style="background-image: url('{{userdata.avatarUrl}}')"></view>
+                  <view class='item-dataBox mar-LR10 round-20'>
+                    <view class='item-mask w100 h100 round-20'></view>
+                    <view class='item-gameTitle w50 pad-TB10 round-20'>{{itemtk.gamedata.gname}}</view>
+                    <view class='item-gameBg bg'  style="background-image: url('{{itemtk.gamedata.img_path}}')"></view>
+                    <view class='item-result'>
+                      <view wx:if="{{ite.talk_game_status == 1}}" class='item-resultBg w70 bg' style='background-image: url({{imagesBaseUrl}}online/state_ying.png)'>
+                        <text class='icon-xing left bg'  style='background-image: url({{imagesBaseUrl}}online/icon_xing.png)'></text>
+                        <view class='item-result-head center-posi round'>
+                          <view class='bg round' style="background-image: url('{{itemtk.gamedata.img_path}}')"></view>
+                        </view>
+                        <view class='item-result-state center-X center-Y center-posi'>胜利</view>
+                        <text class='icon-xing right bg'  style='background-image: url({{imagesBaseUrl}}online/icon_xing.png)'></text>
+                      </view>
+                      <view wx:if="{{ite.talk_game_status == 2}}" class='item-resultBg w70 bg' style='background-image: url({{imagesBaseUrl}}online/state_shu.png)'>
+                        <text class='icon-xing left bg'  style='background-image: url({{imagesBaseUrl}}online/icon_xing.png)'></text>
+                        <view class='item-result-head center-posi round'>
+                          <view class='bg round' style="background-image: url('{{itemtk.gamedata.img_path}}')"></view>
+                        </view>
+                        <view class='item-result-state center-X center-Y center-posi'>失败</view>
+                        <text class='icon-xing right bg'  style='background-image: url({{imagesBaseUrl}}online/icon_xing.png)'></text>
+                      </view>
+                    </view>
+                    <button class='item-again center-Y center-X' data-current="{{itemtk.gamedata.gid}}" bindtap='click_game'>再来一局</button>
+                  </view>
+                </view>
+              </view>
+              <view wx:else class='gameBox pad-LR20'>
+                <view class='item row pad-TB20'>
+                  <view class='item-head bg round' style="background-image: url('{{userdata.avatarUrl}}')"></view>
+                  <view class='item-dataBox mar-LR10 round-20'>
+                    <view class="item-mask w100 h100 round-20 {{btnActive?'active':''}}"></view>
+                    <view class='item-gameTitle w50 pad-TB10 round-20'>{{itemtk.gamedata.gname}}</view>
+                    <view class='item-gameBg bg'  style="background-image: url('{{itemtk.gamedata.img_path}}')"></view>
+                    <view class='item-state center-X center-Y'>
+                      <block wx:if="{{ite.talk_game_status == 3}}">拒绝</block>
+                      <block wx:if="{{ite.talk_game_status == 4}}">对方拒绝</block>
+                      <block wx:if="{{ite.talk_game_status == 5}}">
+                      <!-- 未接受 -->
+                      <button bindtap="click_game_accept" style='z-index:2;' data-id="{{itemtk.time}}" data-gid="{{itemtk.gamedata.gid}}" class='btn-talk-ok'>接受</button>　　
+                      <button bindtap="click_game_refuse" style='z-index:2;' data-id="{{itemtk.time}}" data-gid="{{itemtk.gamedata.gid}}" class='btn-talk-no'>拒绝</button>
+                      </block>
+                      <block wx:if="{{ite.talk_game_status == 6}}">对方未接受</block>
+                      <block wx:if="{{ite.talk_game_status == 7}}">等待回应 {{insertTime[ikey] == null ?"":insertTime[ikey]}}</block>
+                      <block wx:if="{{ite.talk_game_status == 8}}">已失效</block>
+                      <block wx:if="{{ite.talk_game_status == 9}}">游戏中</block>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </block>
+            <!--游戏框end-->
+          </block>
+        </block>
+        <block wx:else>
+          <block wx:for="{{itemtk.data}}" wx:key="index" wx:for-item="ite">
+            <block wx:if="{{ite.uid == userdata.uid}}">
+              <view wx:if="{{ite.talk_game_status == 1 || ite.talk_game_status == 2}}" class='gameBox other pad-LR20 sheng'>
+                <view class='item row-reverse pad-TB20'>
+                  <view class='item-head bg round' style="background-image: url('{{otherdata.avatarUrl}}')"></view>
+                  <view class='item-dataBox mar-LR10 round-20'>
+                    <view class='item-mask w100 h100 round-20'></view>
+                    <view class='item-gameTitle w50 pad-TB10 round-20'>{{itemtk.gamedata.gname}}</view>
+                    <view class='item-gameBg bg'  style="background-image: url('{{itemtk.gamedata.img_path}}"></view>
+                    <view class='item-result'>
+                      <view wx:if="{{ite.talk_game_status == 1}}" class='item-resultBg w70 bg' style='background-image: url({{imagesBaseUrl}}online/state_ying.png)'>
+                        <text class='icon-xing left bg'  style='background-image: url({{imagesBaseUrl}}online/icon_xing.png)'></text>
+                        <view class='item-result-head center-posi round'>
+                          <view class='bg round' style="background-image: url('{{itemtk.gamedata.img_path}}')"></view>
+                        </view>
+                        <view class='item-result-state center-X center-Y center-posi'>胜利</view>
+                        <text class='icon-xing right bg'  style='background-image: url({{imagesBaseUrl}}online/icon_xing.png)'></text>
+                      </view>
+                      <view wx:if="{{ite.talk_game_status == 2}}" class='item-resultBg w70 bg' style='background-image: url({{imagesBaseUrl}}online/state_shu.png)'>
+                        <text class='icon-xing left bg'  style='background-image: url({{imagesBaseUrl}}online/icon_xing.png)'></text>
+                        <view class='item-result-head center-posi round'>
+                          <view class='bg round' style="background-image: url('{{itemtk.gamedata.img_path}}')"></view>
+                        </view>
+                        <view class='item-result-state center-X center-Y center-posi'>失败</view>
+                        <text class='icon-xing right bg'  style='background-image: url({{imagesBaseUrl}}online/icon_xing.png)'></text>
+                      </view>
+                    </view>
+                    <button class='item-again center-Y center-X' data-current="{{itemtk.gamedata.gid}}" bindtap='click_game'>再来一局</button>
+                  </view>
+                </view>
+              </view>
+              <view wx:else class='gameBox other pad-LR20'>
+                <view class='item row-reverse pad-TB20'>
+                  <view class='item-head bg round' style="background-image: url('{{otherdata.avatarUrl}}')"></view>
+                  <view class='item-dataBox mar-LR10 round-20'>
+                    <view class='item-mask w100 h100 round-20'></view>
+                    <view class='item-gameTitle w50 pad-TB10 round-20'>{{itemtk.gamedata.gname}}</view>
+                    <view class='item-gameBg bg'  style="background-image: url('{{itemtk.gamedata.img_path}}')"></view>
+                    <view class='item-state center-X center-Y'>
+                      <block wx:if="{{ite.talk_game_status == 3}}">拒绝</block>
+                      <block wx:if="{{ite.talk_game_status == 4}}">对方拒绝</block>
+                      <block wx:if="{{ite.talk_game_status == 5}}">
+                      <!-- 未接受 -->
+                      <button bindtap="click_game_accept" style='z-index:2;' data-id="{{itemtk.time}}" data-gid="{{itemtk.gamedata.gid}}" class='btn-talk-ok'>接受</button>　　<button bindtap="click_game_refuse" style='z-index:2;' data-id="{{itemtk.time}}" data-gid="{{itemtk.gamedata.gid}}" class='btn-talk-no'>拒绝</button>
+                      </block>
+                      <block wx:if="{{ite.talk_game_status == 6}}">对方未接受</block>
+                      <block wx:if="{{ite.talk_game_status == 7}}">等待回应 {{insertTime[ikey] == null ?"":insertTime[ikey]}}</block>
+                      <block wx:if="{{ite.talk_game_status == 8}}">已失效</block>
+                      <block wx:if="{{ite.talk_game_status == 9}}">游戏中</block>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </block>
+            <!--游戏框end-->
+          </block>
+        </block>
+      </view>
+      <view wx:if="{{itemtk.talk_type == 5}}">
+        <!--自己聊天框start-->
+        <view class='chatBox pad-LR20' wx:if="{{itemtk.uid == userdata.uid}}">
+          <view class='item row mar-TB20'>
+            <view class='item-head bg round' style="background-image: url('{{userdata.avatarUrl}}')"></view>
+            <view class='item-con round-20 center-Y' bindtap='click_player' data-ikey="{{ikey}}" data-url="{{uploadBaseUrl}}{{itemtk.data.fileUrl}}">
+              <image class='item-con-img bg' src='{{imagesBaseUrl}}online/{{yy.playing[ikey]?"yuyind.gif":"yuyin.png"}}'></image>
+              <view class='item-con-second end-X'  style="width:{{itemtk.data.timelong*5}}rpx;" wx:if="{{itemtk.data.timelong>0}}">{{itemtk.data.timelong}}"</view>
+              <view class='icon-triangle'></view>
+            </view>
+          </view>
+        </view>
+        <!--自己聊天框end-->
+        <!--对手聊天框start-->
+        <view class='chatBox other pad-LR20' wx:else>
+          <view class='item mar-TB20'>
+            <view class='item-head bg round' style="background-image: url('{{otherdata.avatarUrl}}')"></view>
+            <view class='item-con other round-20 center-Y' bindtap='click_player' data-ikey="{{ikey}}" data-url="{{uploadBaseUrl}}{{itemtk.data.fileUrl}}">
+              <view class='item-con-second start-X' wx:if="{{itemtk.data.timelong>0}}" style="width:{{itemtk.data.timelong*5}}rpx;" >{{itemtk.data.timelong}}"</view>
+              <image class='item-con-img bg' src='{{imagesBaseUrl}}online/{{yy.playing[ikey]?"yuyind.gif":"yuyin.png"}}'></image>
+              <view class='icon-triangle'></view>
+            </view>
+          </view>
+        </view>
+        <!--对手聊天框end-->
+      </view>
+    </view>
+  </view>
+  
+</scroll-view>
+<view class='foot pad-LR20' id='foot'>
+  <!--按钮框start-->
+  <view class='btnBox row space-b' id='btnBox'>
+    <!-- <button bindtap='click_quick_sendmsg'>按钮框</button>  -->
+    <button bindtap='click_quick_sendmsg' wx:for="{{keyWord}}" wx:key="index" data-current="{{item.text}}">{{item.text}}</button>
+  </view>
+  <!--按钮框end-->
+  <view class='foot-btn row content-Y pad-TB20'>
+    <input class="center-I w80" type='text' placeholder='点击这里发送信息' bindinput="msgInput" value='{{sendMsg}}'></input>
+    <button class="center-I w20 {{btnActive ? 'btnActive':''}}"  bindtap='click_sendmsg'><text class='center-Y center-X'>发送</text></button>
+  </view>
+  <view class='column pad-TB20'>
+    <view class="btn-nav row">
+      <view class='btn-nav-item w33 center-X' >
+        <button class="btn-item bg" catchtap='btn_active_clicked' style='background-image: url({{imagesBaseUrl}}online/icon_online_bottom3.png);' ></button>
+      </view>
+      <view class='btn-nav-item row w33 center-X'>
+        <!--<button class="btn-item bg" bindtap='btn_yuyin_clicked' style='background-image: url({{imagesBaseUrl}}online/icon_online_bottom1.png);'  wx:if='{{btnHidden}}'></button>-->
+        <button class='btn-YY w100 mar-LR20 round-10 bg'  catchtouchstart='click_yuyin_start' catchtouchend="click_yuyin_end" bindtouchmove='move_yuyin_start'>
+          <view class='btn-YY-text round-20' wx:if="{{isyy}}">松开  结束</view>
+          <view class='btn-YY-img bg' style='background-image: url({{imagesBaseUrl}}online/icon_online_bottom1.png);' wx:else></view> 
+        </button>
+      </view>
+      <!-- <button class="btn-item bg" hidden='{{btnvedio}}' bindtap='click_vedio' style='background-image: url({{imagesBaseUrl}}online/icon_online_bottom2.png);' ></button> -->
+      <view class='btn-nav-item w33 center-X'>
+        <button class="btn-item bg {{active ? '':'yactive'}}" bindtap='btn_biaoqing_clicked' style='background-image: url({{imagesBaseUrl}}online/icon_online_bottom5.png);' ></button>
+      </view>
+    </view>
+    <view class='list mar-TB20' hidden='{{gameHidden}}'>
+      <swiper class='h100' display-multiple-items="4">
+        <swiper-item class="row"  wx:for="{{gameList}}" wx:key="gindex" data-i="{{index}}" data-item="{{item}}" data-current="{{item.gid}}" catchtap='click_game'>
+        <button class='list-item column space-b'>
+        <view class='list-item-bg w100 bg round-20' style='background-image: url({{item.bg}});'></view>
+          <view class='list-item-title center-X center-Y'>{{item.text}}</view>
+        </button>
+        </swiper-item>
+      </swiper>
+    </view>
+    <view class='listBQ row wrap' hidden='{{active}}' id='biaoqing'>
+      <view class='bq w10 bg' wx:for="{{biaoqing}}" wx:key="" data-i="{{index}}" data-item='{{item}}' style='background-image: url({{imagesBaseUrl}}{{item.bqImg}})' catchtap="addBiaoqing"></view>
+    </view>
+  </view> 
+</view>
+
+<view class='yuyinBox round-20 pad-TRBL20' wx:if='{{yy.isyy}}'>
+  <view class='row center-X'>
+    <view class='yuyin-bg bg w50' wx:if="{{yy.yyMove}}" style='background-image: url({{imagesBaseUrl}}online/icon_yuyin.png)'></view> 
+    <view class='yuyin-bg bg w50' wx:else style='background-image: url({{imagesBaseUrl}}online/icon_move.png)'></view>
+    <!--语音动画start-->
+    <view class='w50' wx:if='{{yy.yyMove}}'>
+      <view class='yuyin-line w100' animation='{{yyLineAni[5]}}'></view>
+      <view class='yuyin-line w80' animation='{{yyLineAni[4]}}'></view>
+      <view class='yuyin-line w60' animation='{{yyLineAni[3]}}'></view>
+      <view class='yuyin-line w40' animation='{{yyLineAni[2]}}'></view>
+      <view class='yuyin-line w20' animation='{{yyLineAni[1]}}'></view> 
+    </view>
+    <!--语音动画end-->
+  </view>
+  <view class='yuyin-text center-X'>
+    <view class='pad-TRBL20 round-10' wx:if="{{yy.yyMove}}">手指上滑，取消发送</view>
+    <view class='yuyin-text-move pad-TRBL20 round-10' wx:else>松开手指，取消发送</view> 
+  </view>
+</view>
+
+
+<view wx:if="{{isfirst == true}}" class='mask' hidden='{{maskHidden}}' catchtap='btn_back_clicked'>
+    <view class='maskBox {{gamevs.result == 1?"sheng":"shu"}}'>
+    <view class='maskBox-content column center-X round-20'>
+      <view class='resultBox bg center-X center-Y'>
+        <view class='result w100 h100 center-X'>
+          <block wx:if="{{gamevs.result == 1}}">
+            <text class='icon-bg bg' style='background-image: url({{imagesBaseUrl}}online/state_ying.png);'></text>
+            <text class='icon-xing left bg' style='background-image: url({{imagesBaseUrl}}online/icon_xing.png);'></text>
+            <text class='result-state center-posi'>胜利</text>
+            <text class='icon-xing right bg' style='background-image: url({{imagesBaseUrl}}online/icon_xing.png);'></text>
+          </block>
+          <block wx:else>
+            <text class='icon-bg bg' style='background-image: url({{imagesBaseUrl}}online/state_shu.png);'></text>
+            <text class='icon-xing left bg' style='background-image: url({{imagesBaseUrl}}online/icon_xing.png);'></text>
+            <text class='result-state center-posi'>失败</text>
+            <text class='icon-xing right bg' style='background-image: url({{imagesBaseUrl}}online/icon_xing.png);'></text>
+          </block>
+        </view>
+      </view>
+      <view class='icon-head round'>
+        <view class='bg round center-posi' style='background-image: url({{userdata.avatarUrl}});'></view>
+      </view>
+      <!-- <view class='subNav row center-X' hidden='{{item.hidden}}'>
+        <text class='subNav-victory round-10 w20'>{{pveData.shengNum}}连胜</text>
+        <text class='subNav-phase round-10 w20'>{{pveData.state}}</text>
+      </view>
+      <view class='score center-line'><text>{{pveData.nums}}</text>分</view>
+      <view class='ratio pad-TB20'>超过<text>{{pveData.ratio}}</text>%老铁</view>
+      <view class='field pad-TB10 center-I w50'>今天已对决<text>{{pveData.field}}</text>场</view> -->
+      <view class='head center-I row'>
+        <view class='item user round bg' style="background-image: url({{userdata.avatarUrl}})" catchtap="btn_user_clicked" data-state="{{btnState}}">
+          <view class='item-name center2'>{{userdata.nickName}}</view>
+          <view hidden='{{btnState.user}}'>
+            <text class='item-con round-20'>再来一局啊 老铁</text>
+            <text class='icon-triangle'></text>
+          </view>
+        </view>
+        <view class='vs'>{{gamevs.userdata.shengNum}}:{{gamevs.otherdata.shengNum}}</view>    
+        <view class='item other round bg' style='background-image: url({{otherdata.avatarUrl}})' catchtap="btn_other_clicked" data-state="{{btnState}}">
+          <view class='item-name  center2'>{{otherdata.nickName}}</view>
+          <!-- <button class='add round bg' style='background-image: url({{imagesBaseUrl}}common/add.png)'></button> -->
+          <view hidden='{{btnState.other}}'>
+            <text class='item-con round-20'>我准备好了 再战</text>
+            <text class='icon-triangle'></text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='maskBox-btn {{btnState.aniEnd ? "aniEnd":""}}'>
+      <button class='btn-back pad-TB20 red' data-state="{{btnState}}" data-text="{{btnState}}" data-current="{{gid_last_play}}" bindtap='click_game'>
+        再来一战
+      </button> 
+      <button class='btn-back pad-TB20 green' bindtap="btn_back_clicked" data-state="{{btnState}}" data-text="{{btnState}}">
+        换个游戏
+      </button>
+      <!--button class='btn-back pad-TB20' catchtap="btn_back_clicked" data-state="{{btnState}}" data-text="{{btnState}}"  wx:if="{{btnState.quit == true}}">
+        对方已离开房间
+      </button> 
+      <button class='btn-back pad-TB20 green' catchtap="btn_back_clicked" data-state="{{btnState}}" data-text="{{btnState}}"  wx:if="{{btnState.user == true && btnState.other == false && btnState.quit == false}}">
+        对方已准备好,点击再战
+      </button>
+      <button class='btn-back pad-TB20' catchtap="btn_back_clicked" data-state="{{btnState}}" data-text="{{btnState}}"  wx:if="{{btnState.user == false && btnState.other == true && btnState.quit == false}}">
+        等待对方准备
+      </button>
+      <button class='btn-back pad-TB20 green' catchtap="btn_back_clicked" data-state="{{btnState}}" data-text="{{btnState}}"  wx:if="{{btnState.user == false && btnState.other == false && btnState.quit == false}}">
+        点击开始
+      </button-->
+      <button class="btn-index pad-TB20" catchtap="btn_index_clicked">返回首页</button> 
+      <!--button class='btn-friend pad-TB20' catchtap="btn_index_clicked">返回首页</button-->
+    </view>
+  </view>
+</view>

@@ -1,0 +1,34 @@
+<!--pages/user/user.wxml-->
+<!--新消息进来提醒-->
+<view class='new-msg' data-current="{{new_msgtid}}" bindtap="newmsg_clik" hidden='{{new_msgshow}}'>您有新消息进来</view>
+<view class='headImg w100 bg' style='background-image: url({{userdata.avatarUrl}});'></view>
+<view class='info column pad-TRBL20'>
+  <text class='info-name'>{{userdata.nickName}}</text>
+  <text class='info-id pad-TB10'>id:{{userdata.uid}}</text>
+  <view class='info-data'> 
+  <text>{{userdata.sex}} ·</text> 
+  <!-- <text>{{userdata.age}}岁 · </text>
+  <text>{{userdata.star}} |</text> -->
+  <text> {{userdata.city}}</text>
+  </view>
+  <!-- <button class='info-btn pad-TRBL10 round-10' bindtap='btn_edit_clicked'>编辑资料</button> -->
+</view>
+<view class='game pad-TRBL20 mar-TB20'>
+  <view class='game-title'>常玩的游戏</view>
+  <view class='game-box row'>
+    <view class='game-item round-10' wx:for="{{game}}" wx:key="" data-i="{{index}}" data-item="{{item}}" wx:if="{{index<3}}" bindtap="game_click">
+      <view class='game-item-img bg' style="background-image: url({{item.gimg}})" data-current="{{item.gid}}"></view>
+      <view class='game-item-state column pad-TB10'>
+        <view class='title center-I'>{{item.gname}}</view>
+        <view class='state center-I'>胜{{item.sheng}}负{{item.fu}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='btn pad-TRBL20'>
+  <!-- <button class='btn-set w100 row space-b' bindtap='btn_edit_clicked'>
+    <view class='btn-title'>设置</view>
+    <view class='btn-icon bg' style="background-image: url({{imagesBaseUrl}}common/icon_more.png)"></view>
+  </button> -->
+  <button class='btn-back w50 pad-TB10 round-20' bindtap='btn_back_clicked'>返回首页</button>
+</view>

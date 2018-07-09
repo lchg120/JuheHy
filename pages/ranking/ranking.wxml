@@ -1,0 +1,33 @@
+<!--pages/ranking/ranking.wxml-->
+<view class='ranking bg' style="background-image: url({{imagesBaseUrl}}ranking/ranking_bg.png)"></view>
+<view class='main pad-LR20'>
+  <view class='item row pad-TB20' wx:for="{{rankdata}}" wx:key="" data-i="{{index}}" data-item="{{item}}">
+    <view class='item-rank'>
+      <view class='item-rank-bg w100 h100 center-posi bg'  wx:if="{{index < 3}}" style="background-image: url({{imagesBaseUrl}}{{item.rankBg}})"></view>
+      <view class='w100 h100 center-X center-Y'>{{item.rank}}</view>
+    </view>
+    
+    <view class='item-head mar-LR20 bg round' style="background-image: url({{imagesBaseUrl}}{{item.headImg}})"></view>
+    <view class='column'>
+      <view class='item-name center-Y'>{{item.name}}</view>
+      <view class='item-data row center-Y'>
+        <view class='item-data-nums'>共战 {{item.nums}} 次</view>
+        <view class='item-data-winning'>胜率 {{item.winning}} %</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='bottom w100'>
+  <view class='user row pad-TRBL20'>
+    <view class='item-head mar-LR20 bg round' style="background-image: url({{userdata.avatarUrl}})"></view>
+    <view class='column'>
+      <view class='item-name center-Y'>{{userdata.nickName}}</view>
+      <view class='item-data row center-Y'>
+        <view class='item-data-nums'>共战 {{userdata.nums}} 次</view>
+        <view class='item-data-winning'>胜率 {{userdata.winning}} %</view>
+      </view>
+    </view>
+    <view class='item-state pad-LR20 center-X center-Y'>{{userdata.state}}</view>
+  </view>
+</view>
+

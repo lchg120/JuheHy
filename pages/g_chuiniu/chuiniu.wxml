@@ -1,0 +1,162 @@
+<view class='vsuser-view space-b' hidden='{{user.hide}}'>
+	<view class='left'>
+		<view class='photo round'>
+			<!-- <image class='imgsize' src='{{imagesBaseUrl}}game/g_chuiniu/p_k.png'></image> -->
+			<image class='w100 h100 round' src='{{leftview.userinfo.avatar}}'></image>
+		</view>
+		<view class='diolog bg' style='{{user.left.dialogHide?"display:none;":""}}; background-image:url({{imagesBaseUrl}}game/g_chuiniu/rightDialog.png)'>
+			<text>3个</text><image src='{{imagesBaseUrl}}game/g_chuiniu/dice1_2.png'></image>
+		</view>
+	</view>
+	<view class='right end-X'>
+		<view class='photo round'>
+			<!-- <image class='imgsize' src='{{imagesBaseUrl}}game/g_chuiniu/p_k.png'></image> -->
+			<image class='w100 h100 round' src='{{rightview.userinfo.avatar}}'></image>
+		</view>
+		<view class='diolog bg' hidden='1'  style='{{user.right.dialogHide?"display:none;":""}}; background-image:url({{imagesBaseUrl}}game/g_chuiniu/rightDialog.png)'>
+			<text>4个</text><image src='{{imagesBaseUrl}}game/g_chuiniu/dice1_3.png'></image>
+		</view>
+	</view>
+</view>
+
+<!--欢迎动画层-->
+<view class='ready-view bg' hidden='{{ready.hide}}' style="background-image: url('{{imagesBaseUrl}}game/g_chuiniu/shaigubg.png')">
+	<view class='ready-tips' bindtap='startReadAni' hidden='{{ready.tipsHide}}'>
+		<image src='{{imagesBaseUrl}}game/g_chuiniu/help.png'></image>
+	</view>
+	<view class='ready-body' bindtap='click_start' animation='{{ready.shakeAni}}'>
+		<image src='{{imagesBaseUrl}}game/g_chuiniu/shaigu.png' class='imgsize'></image>
+	</view>
+</view>
+<!--对战层-->
+<view class='fight-view bg' hidden='{{fight.hide}}' style="background-image: url('{{imagesBaseUrl}}game/g_chuiniu/gamebg.jpg')">
+	<view class='icon-list'>
+	 	<block wx:for="{{fight.numList}}" wx:for-index="i" wx:key="">
+		<view class='icon{{i+1}}'><image src='{{imagesBaseUrl}}game/g_chuiniu/dice1_{{item}}.png'></image></view>
+		</block>
+		<view class='tips'>
+			<image src='{{imagesBaseUrl}}game/g_chuiniu/enemyround.png' hidden='{{!fight.roundYou}}'></image>
+			<image src='{{imagesBaseUrl}}game/g_chuiniu/selfround.png' hidden='{{!fight.roundSelf}}'></image>
+		</view>
+	</view>
+	<view class='fight-timer' hidden='{{fight.timerHide}}'>
+		<view class='fight-timerbox bg' style="background-image: url('{{imagesBaseUrl}}game/g_chuiniu/timeoutbg.png')">
+			<view class='fight-timer-num'>
+				<text>{{fight.timer}}</text>
+			</view>
+		</view>
+	</view>
+	<view class='fight-click-numlist' hidden='{{fight.clickNumlistHide}}'>
+		<view class='list'>
+			<block wx:for="{{fight.clickNumlist}}" wx:for-index="i" wx:if="{{i <= 4}}" wx:key="">
+			<view bindtap='{{ item.locked?"":"click_numlist" }}' data-index="{{i}}">
+				<image src='{{imagesBaseUrl}}game/g_chuiniu/NumD_T_1.png' class='imgsize numbg' hidden='{{item.locked}}'></image>
+				<image src='{{imagesBaseUrl}}game/g_chuiniu/NumD_A_1.png' class='imgsize numbg' hidden='{{!item.clicked}}'></image>
+				<image src='{{imagesBaseUrl}}game/g_chuiniu/NumUnselected_1.png' class='imgsize numbg' hidden='{{!item.locked}}'></image>
+				<image src='{{imagesBaseUrl}}game/g_chuiniu/num1_{{i}}.png' class='imgsize numtext' hidden='{{item.locked}}'></image>
+			</view>
+			</block>
+		</view>
+		<view class='list'>
+			<block wx:for="{{fight.clickNumlist}}" wx:for-index="i" wx:if="{{i > 4}}" wx:key="">
+			<view bindtap='click_numlist' data-index="{{i}}">
+				<image src='{{imagesBaseUrl}}game/g_chuiniu/NumD_T_1.png' class='imgsize numbg' hidden='{{item.locked}}'></image>
+				<image src='{{imagesBaseUrl}}game/g_chuiniu/NumD_A_1.png' class='imgsize numbg' hidden='{{!item.clicked}}'></image>
+				<image src='{{imagesBaseUrl}}game/g_chuiniu/NumUnselected_1.png' class='imgsize numbg' hidden='{{!item.locked}}'></image>
+				<image src='{{imagesBaseUrl}}game/g_chuiniu/num1_{{i}}.png' class='imgsize numtext' hidden='{{item.locked}}'></image>
+			</view>
+			</block>
+		</view>
+	</view>
+	<view class='fight-click-numlist2' hidden='{{fight.clickNumlist2Hide}}'>
+		<block wx:for="{{fight.clickNumlist2}}" wx:for-index="i" wx:key="">
+		<view class='click-num' bindtap='click_numlist2' data-index="{{i}}">
+			<image src='{{imagesBaseUrl}}game/g_chuiniu/dice1_{{item.id}}.png' class='imgsize'></image>
+			<image src='{{imagesBaseUrl}}game/g_chuiniu/scdice.png' class='imgsize' hidden='{{!item.clicked}}'></image>
+		</view>
+		</block>
+	</view>
+	<view class='fight-click-btn' hidden='{{fight.kaiGenHide}}'>
+		<view class='btn-kai' bindtap='click_kai'>
+			<image src='{{imagesBaseUrl}}game/g_chuiniu/btnKai.png'class='imgsize' hidden='{{!fight.btn.kai}}'></image>
+			<image src='{{imagesBaseUrl}}game/g_chuiniu/btnKai_act.png' class='imgsize' hidden='{{!fight.btn.kaiAct}}'></image>
+		</view>
+		<view class='btn-gen' bindtap='click_gen'>
+			<image src='{{imagesBaseUrl}}game/g_chuiniu/btnGen.png' class='imgsize' hidden='{{!fight.btn.gen}}'></image>
+			<image src='{{imagesBaseUrl}}game/g_chuiniu/btnGen_act.png' class='imgsize' hidden='{{!fight.btn.genAct}}'></image>
+		</view>
+	</view>
+	<view class='fight-handshare' hidden='{{fight.handshareHide}}'>
+		<view class='iconlist'>
+			<view class='icon1'><image src='{{imagesBaseUrl}}game/g_chuiniu/dice1_1.png' class='imgsize'></image></view>
+			<view class='icon2'><image src='{{imagesBaseUrl}}game/g_chuiniu/dice1_2.png' class='imgsize'></image></view>
+			<view class='icon3'><image src='{{imagesBaseUrl}}game/g_chuiniu/dice1_3.png' class='imgsize'></image></view>
+			<view class='icon4'><image src='{{imagesBaseUrl}}game/g_chuiniu/dice1_4.png' class='imgsize'></image></view>
+			<view class='icon5'><image src='{{imagesBaseUrl}}game/g_chuiniu/dice1_5.png' class='imgsize'></image></view>
+		</view>
+		<view class='iconlist'>
+			<view class='icon1'><image src='{{imagesBaseUrl}}game/g_chuiniu/dice1_1.png' class='imgsize'></image></view>
+			<view class='icon2'><image src='{{imagesBaseUrl}}game/g_chuiniu/dice1_2.png' class='imgsize'></image></view>
+			<view class='icon3'><image src='{{imagesBaseUrl}}game/g_chuiniu/dice1_3.png' class='imgsize'></image></view>
+			<view class='icon4'><image src='{{imagesBaseUrl}}game/g_chuiniu/dice1_4.png' class='imgsize'></image></view>
+			<view class='icon5'><image src='{{imagesBaseUrl}}game/g_chuiniu/dice1_5.png' class='imgsize'></image></view>
+		</view>
+	</view>
+</view>
+
+<!--结果层-->
+<view class='result-view' hidden='{{result.hide}}'>
+	<view class='result-bg'>
+		<view class='result-full-h bg' style="background-image:url('{{imagesBaseUrl}}game/g_chuiniu/ready_di.png')">
+			<view class='statustext'>
+				<image src='{{imagesBaseUrl}}game/g_chuiniu/sb_di.png' class='imgsize'></image>
+				<view class='result-tip'>失败</view>
+				<image src='{{imagesBaseUrl}}game/g_chuiniu/sl_di.png' class='imgsize' hidden='true'></image>
+				<view class='result-tip' hidden='true'>胜利</view>
+			</view>
+			<view class='touxiang round'>
+				<image class='imgsize round' src='{{leftview.userinfo.avatar}}'></image>
+				<!-- <image src='{{imagesBaseUrl}}game/g_chuiniu/sl_k.png' class='imgsize' hidden='true'></image> -->
+			</view>
+			<view class='showresult'>
+				3个<image src='{{imagesBaseUrl}}game/g_chuiniu/dice1_3.png' style='width:50rpx;height:50rpx;margin-left:20rpx'></image>
+			</view>
+			<view class='replayBtn' bindtap='click_replay'>
+				<image src='{{imagesBaseUrl}}game/g_chuiniu/chongwan.png' style='width:709rpx; height:319rpx'></image>
+			</view>
+		</view>
+	</view>
+</view>
+
+
+
+<!--匹配到对手-->
+<view class='column start w100 h100 matchViewBox' hidden='{{matchViewBox.isHide}}'>
+  <view class='matchUserLeft w100' animation="{{matchViewBox.matchViewLeftAni}}">
+      <image class='w100 h100 bg' src='{{imagesBaseUrl}}game/cycd/new_move/fight/left-in.png'></image>
+      <view class='userinfoLeft'>
+          <view class='headPic round'>
+              <view class='user-img w100 h100 bg round'  style='background-image: url({{leftview.userinfo.avatar}});'></view> 
+          </view>
+          <view class='extra column center-X center-Y'>
+              <view class='user-name center-X w100'>{{leftview.userinfo.name}}</view>
+          </view>
+      </view>
+  </view>
+  <view class='matchUserRight w100' animation="{{matchViewBox.matchViewRightAni}}">
+      <image class='w100 h100 bg' src='{{imagesBaseUrl}}game/cycd/new_move/fight/right-in.png'></image>
+      <view class='userinfoRight'>
+          <view class='headPic row center-Y space-a round'>
+              <!--头像加载背景start-->
+              <view class='item-head-item round' animation='{{headBgAni1}}'></view>
+              <view class='item-head-item round' animation='{{headBgAni2}}'></view>
+              <view class='item-head-item round' animation='{{headBgAni3}}'></view> 
+              <!--头像加载背景end-X-->
+              <view class='user-img w100 h100 bg round'  style='background-image: url({{rightview.userinfo.avatar}});'></view> 
+          </view>
+          <view class='extra column center-X center-Y'>
+              <view class='user-name center-X w100'>{{rightview.userinfo.name}}</view>
+          </view>
+      </view>
+  </view>
+</view>

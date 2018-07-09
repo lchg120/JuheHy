@@ -1,0 +1,64 @@
+/* pages/ranking/ranking.wxss */
+.ranking {
+  height: 360rpx;
+}
+.main {
+  margin-bottom: 156rpx;
+}
+.item {
+  border-bottom: 2rpx solid #f0f0f0;
+}
+.item-rank {
+  position: relative;
+  width: 80rpx;
+  height: 100rpx
+}
+.item-rank-bg {
+  z-index: 1;
+}
+.item-rank-num {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #515151;
+}
+.item-head {
+  width: 100rpx;
+  height: 100rpx;
+}
+.item-name {
+  height: 60rpx;
+  font-size: 32rpx;
+  color: #010101;
+}
+.item-data {
+  height: 40rpx;
+  font-size: 22rpx;
+  color: #b3b3b3;
+}
+.item-data-nums {
+  margin-right: 20rpx;
+}
+
+/*底部*/
+.bottom {
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  height: 140rpx;
+  border-top: 2rpx solid #c5c5c5;
+  box-shadow: 0px -4rpx 20rpx #c6c6c6;
+  background: #fff;
+}
+.user {
+  position: relative;
+}
+.item-state {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  z-index: 2;
+  font-size: 32rpx;
+  color: #b5b5b5;
+}

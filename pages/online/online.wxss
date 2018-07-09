@@ -1,0 +1,721 @@
+/* pages/online/online.wxss */
+page {
+  background: #e8eaf6;
+}
+/*新消息进来提醒*/
+.new-msg{
+  position:fixed;
+  top:10rpx;
+  left:10rpx;
+  right:10rpx;
+  height:70rpx;
+  line-height: 70rpx;
+  font-size:12px;
+  z-index:99;
+  margin: auto;
+  text-align: center;
+  background: #e8e8e8;
+  border: 1rpx solid #dedede;
+  border-radius: 30rpx;
+  opacity:0.9;
+}
+/*顶部*/
+.onlineTop {
+  height: 60px;
+  padding:0 40rpx;
+  border-top: 1px solid #b0b0b0;
+  background-color: #fff;
+}
+.onlineTop .left {
+  width: 68rpx;
+  height: 68rpx;
+}
+.onlineTop .right {
+  width: 108rpx;
+}
+.onlineTop .box {
+  width: calc(100% - 68rpx - 108rpx - 20rpx*2);  
+}
+.user-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color:  #000000;
+}
+.user-data {
+  font-size: 22rpx;
+  color:  #8c8c8c;
+}
+.user-data-sex {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.onlineTop .right button {
+  padding: 10rpx 0rpx;
+  border: 2rpx solid #000000; 
+  font-size: 20rpx;
+  color: #000000;
+  background: #f6e529;
+} 
+
+/*主体内容*/
+#scroll {
+  background: #e8eaf6;
+}
+.main {
+  float:left;
+  /* overflow:scroll;  */
+}
+
+/*时间框*/
+.timeBox {
+  text-align: center;
+}
+
+
+/*对战框*/
+.pveBox {}
+.pve {
+  margin: auto;
+  background: #ffffff;
+}
+.pve .head {
+  padding-bottom: 50rpx;
+}
+/*对战框和弹窗层公用start*/
+.head .item {
+  position: relative;
+  z-index: 1;
+  width: 160rpx;
+  height: 160rpx;
+  margin-top: -50rpx;
+}
+.head .item:nth-child(1){
+  border: 10rpx solid #3fc2ff;
+}
+.head .item:nth-last-child(1){
+  border: 10rpx solid #ff3f87;
+}
+.head .vs {
+  font-size: 56rpx;
+  font-weight: bold;
+  color: #b0b0b6;
+}
+/*对战框和弹窗层公用end*/
+.pve-content {}
+.pve-content text {}
+.pve-content text:nth-child(1){
+  height: 60rpx;
+  font-size: 36rpx;
+  color: #66666b;
+}
+.pve-content text:nth-child(2){
+  height: 40rpx;
+  font-size: 24rpx;
+  color: #b0b0b6;
+}
+.pve-content .gameNav {
+  margin: 50rpx 5%;
+}
+.pve-content .gameNav-btn {
+  width: 150rpx;
+  height: 150rpx;
+  margin: 0 5rpx;
+  /* background-size: 150rxp 150rpx;
+  background-position: center center;  */
+}
+
+
+/*提示框*/
+.tipsBox{
+  padding: 0 15%;
+}
+.tips {
+  height: 50rpx;
+  font-size: 22rpx;
+  color: #ffffff;
+  background: rgba(0,0,0,0.2);
+}
+
+
+/*按钮框*/
+.btnBox {
+  padding-top: 5px;
+}
+.btnBox button {
+  padding: 4px 8px;
+  border: none;
+  font-size: 20rpx;
+  color: #03242f;
+  -webkit-border-radius: 20px;
+  border-radius: 20rpx;
+  background: #fffde7;
+}
+
+/*聊天框*/
+.chatBox {
+  font-size: 24rpx;
+}
+.chatBox .item {
+  display:-webkit-flex;
+  display:flex;
+  flex-direction:row;
+}
+.chatBox.other .item {
+  display:-webkit-flex;
+  display:flex;
+  flex-direction:row-reverse;
+}
+.chatBox .item-head {
+  width: 80rpx;
+  height: 80rpx;
+}
+.chatBox .item .item-head {
+  border: 4rpx solid #3fc2ff;
+}
+.chatBox.other .item .item-head {
+  border: 4rpx solid #ff3f87;
+
+}
+
+.chatBox .item-con {
+  position: relative;
+  max-width: 50%;
+  padding: 10rpx 20rpx;
+  margin-top: 20rpx;
+  text-align: justify;
+}
+.chatBox .item .item-con{
+  margin-left: 20rpx;
+  background-color: #70edbd;
+}
+.chatBox.other .item .item-con {
+  margin-right: 20rpx;
+  background-color: #fff;
+}
+.chatBox .item-con .item-con-img {
+  width:25rpx;
+  height:25rpx;
+}
+.chatBox.other .item-con .item-con-img {
+  transform: rotate(180deg);
+}
+.chatBox .item-con .item-con-second {
+  min-width: 30rpx;
+}
+
+
+.chatBox .item .icon-triangle {
+  position: absolute;
+  top: 10rpx;
+  left: -30rpx;
+  right: auto;
+  transform: rotate(90deg);
+  border-color: #70edbd transparent transparent transparent;
+}
+.chatBox.other .item .icon-triangle {
+  position: absolute;
+  top: 10rpx;
+  right: -30rpx;
+  left: auto;
+  transform: rotate(-90deg);
+  border-color: #ffffff transparent transparent transparent;
+}
+
+
+/*游戏框*/
+.gameBox {
+  font-size: 32rpx;
+}
+.gameBox .item-head {
+  width: 80rpx;
+  height: 80rpx;
+}
+.gameBox .item .item-head {
+  border: 4rpx solid #3fc2ff;
+}
+.gameBox.other .item .item-head {
+  border: 4rpx solid #ff3f87;
+
+}
+.item-dataBox {
+  position: relative;
+  width: 350rpx;
+  height: 430rpx;
+  overflow: hidden;
+  background: #fff;
+}
+.item-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+.item-mask.active {
+  background: none;
+}
+.item-gameTitle {
+  position: absolute;
+  top: 20rpx;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  margin: auto;
+  text-align: center;
+  font-size: 24rpx;
+  color: #fff;
+  background: rgba(0,0,0,0.5);
+}
+.item-gameBg {
+  height: 350rpx;
+}
+.item-state {
+  height: 80rpx;
+  font-size: 28rpx;
+  color: #000;
+}
+.item-resultBg {
+  position: absolute;
+  top: 60rpx;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 3;
+  margin: auto;
+  height: 60rpx;
+}
+.gameBox .icon-xing {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  margin: auto;
+  width: 20rpx;
+  height: 20rpx;
+}
+.item-result .icon-xing.left {
+  left: -50%;
+}
+.item-result .icon-xing.right {
+  right: -50%;
+}
+.gameBox.shu .icon-xing{
+  opacity: 0.4
+}
+.item-result-head {
+  top: -110rpx;
+  width: 72rpx;
+  height: 72rpx;
+  border: 6rpx solid #ffffff;
+}
+.gameBox.sheng .item-result-head {
+  border: 6rpx solid #fd1944;
+}
+.gameBox.ping .item-result-head {
+  border: 6rpx solid #198ffd;
+}
+.gameBox.shu .item-result-head {
+  border: 6rpx solid #474a51;
+}
+.item-result-head .bg {
+  width: 100%;
+  height: 100%;
+  /* border: 4rpx solid #fff; */
+}
+.item-result-state {
+  margin: auto;
+  color: #fff;
+  font-size: 28rpx;
+}
+.gameBox .item-again {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  z-index: 3;
+  height: 80rpx;
+  color: #fd1944;
+  background: #fff;
+  -webkit-border-top-left-radius: 0;
+  -webkit-border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  -webkit-border-bottom-left-radius: 20rpx;
+  -webkit-border-bottom-right-radius: 20rpx;
+  border-bottom-left-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
+}
+
+
+/*底部*/
+.foot {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+   min-height: 112px; 
+  z-index: 3;
+  background: #fff;
+}
+.foot-btn {}
+.foot-btn input {
+  margin-bottom: 20rpx;
+  color: #333333;
+  font-size: 30rpx;
+}
+.foot-btn .btnActive {
+  border: 2rpx solid #000000;
+  color: #000000;
+  background: #f6e529;
+}
+.foot-btn button {
+  margin-bottom: 20rpx;
+  border: 2rpx solid #d3d3d3;
+  -webkit-border-radius: 40rpx;
+  border-radius: 40rpx;
+  color: #bebebe;
+}
+.foot-btn button text {
+  padding:10rpx 20rpx;
+  margin-bottom: -2rpx;
+  font-size: 24rpx;
+}
+.btn-item {
+  position: relative;
+  width: 70rpx;
+  height: 70rpx;
+  
+}
+.btn-nav .btn-item {}
+.btn-nav .btn-nav-item:nth-child(1) .btn-item{
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background-color: red;
+  background-repeat: none;
+  background-size: 50rpx 25rpx;
+  background-position: 50% 50%;
+}
+.btn-nav .btn-nav-item .btn-YY {
+  position: relative;
+  border: 2rpx solid #d3d3d3;
+  color: #bebebe;
+  font-size: 30rpx;
+  border: none;
+}
+.btn-YY-text {
+  padding: 12rpx 24rpx;
+  border: 2rpx solid #000000;
+  color:#000000;
+  background: #70edbd;
+}
+.btn-YY-img {
+  width: 70rpx;
+  height: 70rpx;
+}
+
+
+.btn-item.active::after{
+  content: "";
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+  z-index: -1;
+  display: block;
+  width: 135rpx;
+  height: 135rpx;
+  background: yellow; 
+}
+.btn-item.active:nth-child(1)::after, .btn-item.active:nth-last-child(1)::after, .btn-item.active:nth-last-child(2)::after {
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+.btn-item.active:nth-child(3)::after {
+  background: none;
+}
+
+.foot .list {
+  height: 220rpx;
+  font-size: 0;
+  border-top: 2rpx solid #e8e8e8;
+  overflow: hidden;
+}
+.list-item {
+  width: 164rpx;
+  margin: 10rpx;
+  overflow: hidden;
+}
+.list-item-bg {
+  height: 150rpx;
+}
+.list-item-title {
+  height: 50rpx;
+  font-size: 24rpx;
+  color: #333333;
+}
+
+.listBQ {}
+.listBQ .bq {
+  margin: 1.25%;
+  height: 60rpx;
+}
+
+
+/*弹窗层*/
+.maskBox {
+  width: 80%;
+  margin: 28% auto 0;
+  pointer-event: none;/*阻止点击穿透*/
+}
+.maskBox .resultBox {
+  width: 90%;
+  height: 100rpx;
+  margin: auto;
+  pointer-event: auto;/*子级需要搭配父级使用*/
+}
+.result {
+  position: relative;
+  font-size: 40rpx;
+  color: #fff;
+}
+.result .icon-bg{
+  width: 100%;
+  height: 100%;
+  margin: -20rpx auto 0;
+}
+
+
+.result .icon-xing {
+  position: absolute;
+  top: 0;
+  bottom: 40%;
+  margin: auto;
+  z-index: 1;
+  width: 30rpx;
+  height: 30rpx;
+}
+.result .icon-xing.left {
+  left: -50%;
+  right: 0;
+}
+.result .icon-xing.right {
+  left: 0;
+  right: -50%;
+}
+.maskBox.shu .icon-xing {
+    opacity: 0.4;
+}
+.result-state {
+  top: 4rpx;
+}
+
+.maskBox-content {
+  background: #fff;
+  font-size: 30rpx;
+  text-align: center;
+}
+.maskBox-content .subNav {
+  padding: 100rpx 0 20rpx;
+}
+.maskBox-content .subNav text {
+  padding: 5rpx 0;
+  margin: 0 5rpx;
+  color: #fff;
+}
+.maskBox-content .subNav-victory {
+  background: #f82c54;
+}
+.maskBox-content .subNav-phase {
+  background: #9039ff;
+}
+.maskBox-content .score {
+  margin: auto;
+  color: #1a1839;
+}
+.maskBox-content .score text{
+  font-size: 100rpx;
+  font-weight: 100;
+}
+.maskBox-content .icon-head {
+  position: relative;
+  width: 170rpx;
+  height: 170rpx;
+  margin: -270rpx auto 0;
+}
+.maskBox.sheng .icon-head {
+  background-color: #fd1944; 
+  /* border: 6rpx solid #fd1944; */
+}
+.maskBox.ping .icon-head {
+  background-color: #198ffd; 
+  /* border: 6rpx solid #198ffd; */
+}
+.maskBox.shu .icon-head {
+  background-color: #474a51;
+  /* border: 6rpx solid #474a51; */
+}
+.maskBox-content .icon-head .bg {
+  width: 150rpx;
+  height: 150rpx;
+  /* border: 5rpx solid #fff; */
+}
+.maskBox-content .ratio {
+  font-size: 24rpx;
+  color: #9a99b3;
+}
+.maskBox-content .field {
+  color:#0a093b;
+  background: #ffee58;
+} 
+.maskBox-content .item .icon-triangle {
+  position: absolute;
+  top: -24rpx;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  margin: auto;
+}
+.maskBox-content .head {
+  position: relative;
+  padding: 200rpx 0 80rpx;
+  font-size: 24rpx;
+}
+.maskBox-content .head .item {
+  width: 120rpx;
+  height: 120rpx;
+  overflow: initial;
+}
+.maskBox-content .head .item-con {
+  position: absolute;
+  top: -60rpx;
+  left: -20rpx;
+  z-index: 3;
+  transform: translateX(-20rpx);
+  padding: 5rpx 20rpx;
+  white-space: nowrap;
+  color: #fff;
+  background-color: #00e676;
+}
+.maskBox-content .head .item-name {
+  position: absolute;
+  bottom: -50rpx;
+	left: 50%;
+	transform: translateX(-50%);
+  overflow: hidden;
+  width: 250rpx;
+  height: 30rpx;
+  margin: auto;
+  color: #5b5b5b;
+}
+/* .maskBox-content .other .add {
+  position: absolute;
+  right: -20rpx;
+  bottom: 0rpx;
+  z-index: 1;
+  width: 50rpx;
+  height: 50rpx;
+} */
+.maskBox-content .vs{ 
+  margin-top: -40rpx;
+  padding: 30rpx 50rpx;
+  font-size: 50rpx;
+  font-weight: initial;
+  color: #1a1839;
+}
+.maskBox-btn {
+  position: relative;
+  height: 300rpx;
+  overflow: hidden;
+}
+.maskBox-btn button {
+  margin: 20rpx auto 0;
+  -webkit-border-radius: 40rpx;
+  border-radius: 40rpx;
+  font-size: 24rpx;
+  background: rgba(55,60,91,0.8);
+  /* animation: footBtnAni 1s ease-in 0s 1 forwards; */
+}
+.maskBox-btn.aniEnd button {
+  animation: none;
+}
+.maskBox-btn .btn-index.red {
+  background: #ff1b66;
+}
+.maskBox-btn .btn-back.red {
+   background: #ff1b66; 
+}
+.maskBox-btn .btn-back.green {
+   background: #00e676; 
+}
+.maskBox-btn .btn-friend {
+  background: none;
+}
+@keyframes footBtnAni {
+  0% {
+    margin: 300rpx auto 0;
+  }
+  30% {
+    margin: 0rpx auto 0;
+  }
+  50% {
+    margin: 20rpx auto 0;
+  }
+}
+
+.btn-talk-ok{
+  font-size: 12px;
+  width: 100rpx;
+  height: 50rpx;
+  border-radius: 20rpx;
+  background: #12c580;
+  margin: 10rpx 0;
+}
+.btn-talk-no{
+  font-size: 12px;
+  width: 100rpx;
+  height: 50rpx;
+  border-radius: 20rpx;
+  background: #f6576e;
+  margin: 10rpx 0;
+}
+.emij{
+  float: left;
+  margin: 0 2rpx;
+}
+.yactive{
+  background-color: yellow;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.yuyinBox {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 120rpx;
+  left: 0;
+  margin: auto;
+  z-index: 3;
+  width: 320rpx;
+  height: 280rpx;
+  background: rgba(0,0,0,0.5);
+}
+.yuyinBox .yuyin-bg {
+  width: 160rpx;
+  height: 200rpx;
+}
+.yuyinBox .yuyin-text {
+  color: #fff;
+  font-size: 28rpx;
+}
+.yuyinBox .yuyin-text-move {
+  background: rgba(250, 22, 22, 0.5);
+}
+.yuyin-line {
+  opacity: 0;
+  height: 16rpx;
+  margin: 20rpx 0;
+  background: #fff;
+}

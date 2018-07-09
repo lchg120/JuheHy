@@ -1,0 +1,73 @@
+<!--新消息进来提醒-->
+<view class='new-msg' data-current="{{new_msgtid}}" bindtap="newmsg_clik" hidden='{{new_msgshow}}'>您有新消息进来</view>
+<view class='w100 h100 bg' style='background-image: url({{imagesBaseUrl}}fight/fight_bg.png);' >
+  <view class='onload column center-Y'>
+    <text class='pve'>
+      <block wx:if="{{pveShow == false}}">正在匹配</block>
+      <block wx:if="{{pveShow == true}}">匹配成功</block>
+    </text>
+    <view data-time="{{waitTime}}">等待{{waitTime}}秒</view>
+    <text class='pveNull'>
+      <block  wx:if="{{waitTime > 15}}">匹配失败，请重新匹配</block>
+    </text>
+    <!--线条动画start-->
+    <view class='line space-b'>
+      <view class='line-1 column space-a'>
+        <view class="line-item round-20" animation='{{lineLeftAni}}'></view>
+        <view class="line-item round-20" animation='{{lineLeftAni}}'></view>
+         <view class="line-item round-20" animation='{{lineLeftAni}}'></view> 
+      </view>
+      <view class='line-2 column space-a'>
+        <view class="line-item round-20" animation='{{lineRightAni}}'></view>
+        <view class="line-item round-20" animation='{{lineRightAni}}'></view> 
+        <view class="line-item round-20" animation='{{lineRightAni}}'></view> 
+      </view>
+    </view> 
+    <!--线条动画end-->
+  </view>
+  <view class='box w70 round-20'>
+    <view class='game w33 pad-TB10'>{{gamedata.name}}</view>
+    <view class='row space-b pad-LR20'>
+      <view class='item w40 center-X center-Y column'>
+        <view class='item-head bg round' style='background-image: url({{userdata.avatarUrl}});'></view>
+        <view class='item-name w100 ellipsis-1'>{{userdata.nickName}}</view>
+        <view class='item-info'>
+          <text class='item-sex'>{{userdata.sex}}</text> · 
+          <text>{{userdata.city}}</text>
+          <!-- <text>·{{userdata.age}}岁·</text>
+          <text>{{userdata.star}}</text> -->
+        </view>
+        <!-- <view class='item-city mar-TB10'>{{userdata.city}}</view> -->
+        <!-- <view class='item-distance'  wx:if="{{userdata.distance != 0}}">{{userdata.distance}}KM</view>  -->
+      </view>
+      <view class='item other w40 center-X center-Y column hidden={{pveShow?"":"item-load"}} '>
+        <view class='item-head bg round row center-X center-Y space-a'>
+          <!--头像加载背景start-->
+          <view class='item-head-item round' animation='{{headBgAni1}}'></view>
+          <view class='item-head-item round' animation='{{headBgAni2}}'></view>
+          <view class='item-head-item round' animation='{{headBgAni3}}'></view>
+          <!--头像加载背景end-->
+          <view class='item-head-other w100 h100 bg round'  style='background-image: url({{otherdata.avatarUrl}});'></view> 
+        </view>
+        <view class='item-name w100 ellipsis-1'>{{otherdata.nickName}}</view>
+        <view class='item-info'>
+          <text>{{otherdata.sex}}</text> · 
+          <text>{{otherdata.city}}</text>
+          <!-- <text>·{{otherdata.age}}岁·</text>
+          <text>{{otherdata.star}}</text> -->
+        </view>
+        <!-- <view class='item-city mar-TB10'>{{otherdata.city}}</view> -->
+        <!-- <view class='item-distance'><text>{{otherdata.distance}}KM</text></view>   -->
+      </view>
+    </view>
+  </view>
+  <view class='tipsBox w70 rolumn'>
+    <!-- <view class='tipsAni tips1'>游戏提示：{{tips.tips1}}</view>
+    <view class='tips2'>{{tips.tips2}}</view> -->
+    <block wx:for="tips" wx:key="" wx:for-index="index" wx:if="{{false}}">
+      <view wx:if="{{index%2 == 0}}" class='tips1' animation="{{tipsAni1}}">{{tips[index]}}</view>
+      <view wx:else class='tips2'  animation="{{tipsAni2}}">{{tips[index]}}</view>
+    </block>
+  </view>
+  <button class='btn-back bg' bindtap='btn_back_clicked' style='background-image: url({{imagesBaseUrl}}common/btn_back.png);'></button>
+</view>

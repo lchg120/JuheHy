@@ -1,0 +1,61 @@
+/* pages/playGame/playGame.wxss */
+/*主体*/
+.main {
+  margin: 20rpx auto;
+}
+.main-item {
+  width: 31.33%;
+  margin: 10rpx 1%;
+  color: #fff;
+  background: #d15563;
+  overflow: hidden;
+}
+.main-item-img {
+  height: 240rpx;
+}
+.main-item-content {}
+.main-item-content text {}
+.main-item:nth-child(9n+1){
+  background: -webkit-linear-gradient(left,#db6a76,#d15461); 
+  background: linear-gradient(left,#db6a76,#d15461);
+}
+.main-item:nth-child(9n+2){
+  background: -webkit-linear-gradient(left,#78ca48,#67b138); 
+  background: linear-gradient(left,#78ca48,#67b138);
+}
+.main-item:nth-child(9n+3){
+  background: -webkit-linear-gradient(left,#ecac4c,#f0994c); 
+  background: linear-gradient(left,#ecac4c,#f0994c);
+}
+.main-item:nth-child(9n+4){
+  background: -webkit-linear-gradient(left,#3251f6,#50adf4); 
+  background: linear-gradient(left,#3251f6,#50adf4);
+}
+.main-item:nth-child(9n+5){
+  background: -webkit-linear-gradient(left,#3b6bf6,#3464f6); 
+  background: linear-gradient(left,#3b6bf6,#3464f6);
+}
+.main-item:nth-child(9n+6){
+  background: -webkit-linear-gradient(left,#c43bb4,#4f13d4); 
+  background: linear-gradient(left,#c43bb4,#4f13d4); 
+}
+.main-item:nth-child(9n+7){
+  background: -webkit-linear-gradient(left,#cf7755,#b15826); 
+  background: linear-gradient(left,#cf7755,#b15826));
+}
+.main-item:nth-child(9n+8){
+  background: -webkit-linear-gradient(left,#4293ea,#5ecd80); 
+  background: linear-gradient(left,#4293ea,#5ecd80);
+}
+.main-item:nth-child(9n+9){
+  background: -webkit-linear-gradient(left,#b345e6,#7f26db); 
+  background: linear-gradient(left,#b345e6,#7f26db);
+}
+
+.main-item-content text:nth-child(1){
+  font-size: 28rpx;
+}
+.main-item-content text:nth-last-child(1){
+  font-size: 20rpx;
+  opacity: 0.5;
+} 

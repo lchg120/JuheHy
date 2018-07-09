@@ -1,0 +1,258 @@
+.imgsize{width: 100%; height: 100%;}
+.vsuser-view{
+	position: relative; left: 0;right:0;top:0; bottom: 0; z-index: 99999; width: 100%; height: 236rpx;
+	display: flex; flex-flow:row nowrap;
+}
+.vsuser-view .left, .vsuser-view .right{position: relative; width:50%;}
+.vsuser-view .left .photo{ width: 130rpx; height: 130rpx; margin:40rpx 0 0 40rpx; overflow: hidden; border: 8rpx solid #c28737; }
+.vsuser-view .right .photo{ width: 130rpx; height: 130rpx; margin:40rpx 40rpx 0 0rpx;  overflow: hidden; border: 8rpx solid #c28737;}
+
+.vsuser-view .diolog{
+	width:187rpx; height: 76rpx; position:absolute; top: 220rpx; background-size: 100%;
+	color: #fff; font-size: 34rpx;
+	display: inline-flex; flex-flow:row nowrap; justify-content:center; align-items:center; align-content:center;
+}
+.vsuser-view .diolog image{width:40rpx; height: 40rpx;}
+.vsuser-view .diolog text{margin-right: 10rpx}
+.vsuser-view .right .diolog{right:0}
+
+.welcome-view{
+	width: 100%; height: 100%;
+	position: absolute; top: 0; left: 0; right:0; bottom: 0;
+	background-size:100%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	display: flex; flex-flow:column wrap; justify-content:center; align-items:center; align-content:center;
+}
+.welcome-logo{width:624rpx; height: 410rpx; position: absolute; top: 0;}
+.welcome-icon{position: relative; width:400rpx; height: 360rpx;}
+.v-icon-1{width:98rpx; height: 84rpx; position: absolute; left: 220rpx; top: 0rpx;}
+.v-icon-2{width:185rpx; height: 161rpx; position: absolute; left: 0; top:30rpx}
+.v-icon-3{width:272rpx; height: 231rpx;position: absolute; left: 130rpx; top:100rpx}
+.welcome-playbtn{width: 709rpx; height: 319rpx; position: absolute; bottom: 100rpx;}
+
+.ready-view{
+	width:100%; height: 100%; position:fixed; left: 0; top:0; right:0; bottom:0;
+	background-size:100%; background-repeat: no-repeat; background-position:center center;
+	display: flex; flex-flow:row wrap; justify-content:center; align-items:center; align-content:center;
+	overflow: hidden;
+}
+.ready-body{
+	position: absolute;  top:calc((100% - 542rpx)/2);
+	width:390rpx; height: 542rpx;
+}
+.ready-tips{
+	width:100%; height: 100%; background: rgba(0,0,0,.5);
+	display: inline-flex; flex-flow:row wrap; justify-content:center; align-items:center; align-content:center;
+	position: absolute; left: 0; top: 0; bottom: 0; right: 0; z-index: 999;
+}
+.ready-tips image{width:609rpx; height: 500rpx;}
+
+.ready-readybg{
+	position: absolute; left: 0;top: 0; z-index:9; width:100%; height: 100%;
+	display: flex;
+	justify-content:center;
+	align-items:center;
+	align-content:center;
+	background: rgba(0,0,0,.5)
+}
+.ready-readybg image{width:720rpx; height: 110rpx;}
+.ready-anition{
+	position: absolute; left: 0 ;top: 0; z-index:10; width:100%; height: 100%;
+	display: flex; flex-flow:row wrap; justify-content:center; align-items:center; align-content:center;
+}
+.ready-readyimg{width:308rpx; height: 213rpx;}
+.ready-goimg{width:229rpx; height: 158rpx;}
+
+.fight-view{
+	position: absolute; left: 0 ;top: 0; width:100%; height:100%;
+	background-size: 100%; background-repeat: no-repeat; background-position: bottom center;
+	display: flex; flex-flow:row wrap; justify-content:center; align-items:flex-start; align-content:center;
+	overflow: hidden;
+}
+/*五个骰子 */
+.icon-list{position: relative; margin-top: 70rpx; width: 330rpx; height: 200rpx;}
+.icon-list image{width:96rpx; height: 96rpx; }
+.icon-list .icon1{position: absolute; z-index: 1; left: 20rpx; top: 20rpx;  transform: rotate(16deg)}
+.icon-list .icon2{position: absolute; z-index: 2; left: 120rpx; top: 6rpx;  transform: rotate(6deg)}
+.icon-list .icon3{position: absolute; z-index: 3; left: 222rpx; top: 10rpx;  transform: rotate(-16deg)}
+.icon-list .icon4{position: absolute; z-index: 4; left: 100rpx; top: 104rpx;  transform: rotate(4deg)}
+.icon-list .icon5{ position: absolute; z-index: 5; left: 200rpx; top: 114rpx;  transform: rotate(-16deg)}
+
+/*提示消息*/
+.icon-list .tips{width:360rpx; height: 69rpx; position: absolute; z-index: 9; top: 202rpx;}
+.icon-list .tips image{width:100%; height: 100%;}
+
+.fight-timer{position: absolute; width:200rpx; height: 200px; top:356rpx;}
+.fight-timerbox{
+	position: relative; width:100%; height: 100%;
+	background-size: 100%; background-repeat: no-repeat;
+	text-align: center
+}
+.fight-timer-num{font-size: 130rpx; color: #fff; padding-top: 10rpx;}
+.fight-timer-num text{text-shadow: 8rpx 0 20rpx #000;}
+
+.fight-click-numlist{
+	position: absolute; bottom: 380rpx;
+}
+.fight-click-numlist .list{
+	width:100%; 
+	display: inline-flex; flex-flow:row wrap; justify-content:center; align-items:center; align-content:center;
+}
+.fight-click-numlist .list view{width:104rpx; height: 104rpx; background-size:100%; margin-right: 26rpx; position: relative;}
+.fight-click-numlist .list view:last-child{margin:0;}
+.fight-click-numlist .list:last-child{margin-top:6rpx;}
+
+.fight-click-numlist .numbg{position: absolute; z-index: 1;}
+.fight-click-numlist .numtext{position: absolute; z-index: 2;}
+
+.fight-click-numlist2{
+	position: absolute; width:100%; bottom: 250rpx;
+	display: inline-flex; flex-flow:row nowrap; justify-content:center; align-items:center; align-content:center;
+}
+.fight-click-numlist2 .click-num{width:96rpx; height: 96rpx; margin-right: 20rpx; position: relative}
+.fight-click-numlist2 .click-num image{position: absolute;}
+.fight-click-numlist2 .click-num image:first-child{z-index: 1;}
+.fight-click-numlist2 .click-num image:last-child{z-index: 2;}
+.fight-click-numlist2 .click-num:last-child{margin:0;}
+
+.fight-click-btn{
+	position: absolute; width:100%; bottom: 30rpx;
+	display: inline-flex; flex-flow:row nowrap; justify-content:space-between; align-items:center; align-content:center;
+}
+.fight-click-btn view{width:149rpx; height: 150rpx;}
+.fight-click-btn view:first-child{margin-left: 100rpx;}
+.fight-click-btn view:last-child{margin-right: 100rpx;}
+.fight-click-btn view image{width:100%; height: 100%;}
+
+.fight-handshare{
+	width:100%; height: 150rpx; display: inline-flex; flex-flow:row nowrap;
+	position: absolute; bottom: 180rpx;
+}
+.fight-handshare .iconlist{position: relative; width:40%; margin-left:10%}
+.fight-handshare .iconlist image{width:60rpx; height: 60rpx;}
+.fight-handshare .iconlist .icon1{position: absolute; z-index: 1; left: 20rpx; top: 20rpx;  transform: rotate(16deg)}
+.fight-handshare .iconlist .icon2{position: absolute; z-index: 2; left: 88rpx; top: 6rpx;  transform: rotate(6deg)}
+.fight-handshare .iconlist .icon3{position: absolute; z-index: 3; left: 157rpx; top: 10rpx;  transform: rotate(-16deg)}
+.fight-handshare .iconlist .icon4{position: absolute; z-index: 4; left: 80rpx; top: 70rpx;  transform: rotate(4deg)}
+.fight-handshare .iconlist .icon5{ position: absolute; z-index: 5; left: 150rpx; top: 76rpx;  transform: rotate(-16deg)}
+
+.result-view{
+	width:100%; height: 100%; position: absolute; left: 0; top: 0; bottom: 0; background: rgba(0,0,0,.6);
+	z-index: 9999999;
+}
+.result-bg{
+	width:100%; height: 100%;
+	display: inline-flex;
+	flex-flow:row nowrap;
+	justify-content:center;
+	align-items:center;
+	align-content:center;
+}
+.result-full-h{
+	width:100%; height: 110rpx; position: relative;
+	background-size: 100%; background-repeat: no-repeat;
+	margin-bottom: 160rpx;
+}
+
+.result-full-h .statustext{
+	position: absolute;  left:calc((100% - 376rpx)/2); bottom: 0;
+	width:376rpx;height:80rpx;
+	text-align: center
+}
+.result-full-h .result-tip{position: absolute; width:100%; bottom: 14rpx; color: #fff; font-size: 36rpx}
+.result-full-h .touxiang{
+	width:160rpx; height: 160rpx; position: absolute; left:calc((100% - 160rpx - 8rpx)/2); top: -120rpx;
+  border: 8rpx solid #c28737;
+}
+.result-full-h .showresult{
+	width:100%; height: 100rpx;  position: absolute; bottom: -123rpx;
+	color: #fff;
+	text-align: center;
+	display: inline-flex;
+	flex-flow:row nowrap;
+	justify-content:center;
+	align-content:center;
+	font-size: 36rpx;
+}
+.result-full-h .replayBtn{
+	margin-top:140rpx;
+}
+
+
+
+/*匹配到对手*/
+.matchViewBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  overflow: hidden;
+  background: #673ab7;
+  color: #fff;
+}
+.headPic {
+  width: 180rpx; 
+  height: 180rpx;
+  border: 6rpx solid rgba(250, 250, 250, .9)
+}
+.extra{
+  width:180rpx; 
+  font-size: 28rpx;
+}
+
+.matchUserLeft{ 
+  position: absolute; 
+  left: -110%; 
+  top: 80rpx; 
+  height: 555rpx;
+} 
+.userinfoLeft{
+  position:absolute; 
+  right:40rpx; 
+  top:180rpx;
+}
+.matchUserLeft .headPic {
+  position: relative;
+  background: #ff3f87;
+}
+
+.matchUserRight{ 
+  position: absolute; 
+  right: -110%; 
+  top: 506rpx; 
+  height: 555rpx;
+}
+.userinfoRight{
+  position:absolute; 
+  left:70rpx; 
+  top:180rpx;
+}
+.userinfoRight .headPic {
+  position: relative;
+  background: #3fc2ff;
+}
+
+.headPic .user-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+.extra .user-name {
+  margin-top:26rpx;
+}
+.extra .user-lv {
+  font-weight:bold
+}
+
+.item-head-item {
+  width: 24rpx;
+  height: 24rpx;
+  background-color: gray;
+  background: #000;
+  opacity: 0.3;
+}
+

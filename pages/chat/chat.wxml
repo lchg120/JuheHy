@@ -1,0 +1,39 @@
+<!--pages/chat/chat.wxml-->
+<!--公共顶部start-->
+<!--新消息进来提醒-->
+<view class='new-msg' data-current="{{new_msgtid}}" bindtap="newmsg_clik" hidden='{{new_msgshow}}'>您有新消息进来</view>
+<view class='navHead fiexd row space-b center-Y'>
+  <button class='left bg round' style='background-image: url({{userdata.avatarUrl}});'  bindtap='btn_user_clicked' open-type="getUserInfo" lang="zh_CN"></button> 
+  <view class='content w70 row space-b'>
+    <button bindgetuserinfo="click_nav" data-url="{{item.url}}" class="navHead-item w25 pad-TB10 center center2 center-I {{item.active?'active':''}}"  wx:for="{{navHead}}" wx:key="" data-item="{{item}}" data-index="{{index}}" open-type="getUserInfo" lang="zh_CN"> 
+       {{item.text}} 
+      <view class='line' animation="{{headAni}}"></view>
+    </button>
+  </view>
+  <button class='right bg' style='background-image: url({{imagesBaseUrl}}common/userAdd.png);' bindtap='btn_add_clicked' open-type="getUserInfo" lang="zh_CN"></button>
+</view>
+<!--主体内容-->
+<view class='page-body' style='height:{{uiheight}}px;'>
+  <view style='height:60px;'></view>
+  <view class='main pad-LR20'>
+    <button class='main-item row center-Y space-b' wx:for="{{user}}" for-index="{{index}}" wx:key="uindex" bindtap="btn_online_clicked" data-tid="{{item.tid}}">
+      <view class='left round bg' style='background-image: url({{item.userImg}});'>
+      </view>
+      <view class="redPoint round">
+        <view class='redPoint-bg w100 h100' hidden="{{0==item.if_new}}"></view>
+      </view>
+      <view class='content column'>
+        <text class='center-Y ellipsis-1'>{{item.name}}</text>
+        <text wx:if="{{!item.isfriends}}" class='center-Y ellipsis-1'>临时会话保留24小时，成为好友永久保留对话</text>
+        <text wx:elif="{{3==item.talk_data.talk_type}}" class='center-Y ellipsis-1'>{{item.talk_data.gname}}(胜利)</text>
+        <text wx:elif="{{1==item.talk_data.talk_type}}" class='center-Y ellipsis-1'> 已配对好对手，等你来</text>
+        <text wx:elif="{{2==item.talk_data.talk_type || 4==item.talk_data.talk_type}}" class='center-Y ellipsis-1'>{{item.talk_data.data}}</text>
+      </view>
+      <view class='right column'>
+        <view class='main-item-text center-I'>{{item.time}}</view>
+        <canvas canvas-id="myCanvas_{{index}}" hidden='true'></canvas>
+        <view class='canvas'><image src='{{item.timeimg}}'></image></view> 
+      </view>                                                                                                                                                                                                                                                                                                                                                                                                                                        
+    </button>
+  </view>
+</view>

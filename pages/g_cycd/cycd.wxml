@@ -1,0 +1,112 @@
+<view class='column start matchViewBox' hidden='{{matchViewBox.ishide}}' animation="{{matchViewBox.matchViewBoxAni}}">
+    <!--匹配到对手-->
+    <view hidden='{{matchViewBox.matchViewHide}}' class='column start matchView'>
+        <view class='matchVsLogo column' animation="{{matchViewBox.matchViewLogoAni}}">
+            <image src='{{imagesBaseUrl}}game/cycd/new_move/fight/vslogo.png'></image>
+        </view>
+        <view class='matchUserLeft column' animation="{{matchViewBox.matchViewLeftAni}}">
+            <image src='{{imagesBaseUrl}}game/cycd/new_move/fight/left-in.png' class='bg'></image>
+            <view class='userinfoLeft column'>
+                <view class='userinfoHeadpic'>
+                    <image src='{{leftview.userinfo.avatar}}'></image>
+                </view>
+                <view class='userinfoExtra column center-X center-Y'>
+                    <view class='w100 center-X' style='margin-top:26rpx;'>{{leftview.userinfo.name}}</view>
+                     <!-- <view class='w100 center-X'>LV：{{leftview.userinfo.level}}</view>  -->
+                    <!-- <view hidden='true' class='center-X' style='color:#fdaf35'>进场费：{{cost}}</view> -->
+                </view>
+            </view>
+        </view>
+        <view class='matchUserRight' animation="{{matchViewBox.matchViewRightAni}}">
+            <image src='{{imagesBaseUrl}}game/cycd/new_move/fight/right-in.png' class='bg'></image>
+            <view class='userinfoRight column'>
+                <view class='userinfoHeadpic'>
+                    <image src='{{rightview.userinfo.avatar}}'></image>
+                </view>
+                <view class='userinfoExtra column center-X center-Y'>
+                    <view class='w100 center-X' style='margin-top:26rpx;'>{{rightview.userinfo.name}}</view>
+                     <!-- <view class='w100 center-X'>LV：{{rightview.userinfo.level}}</view>  -->
+                    <!-- <view hidden='true' class='center-X' style='color:#fdaf35'>进场费：{{cost}}</view> -->
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!--对战层-->
+<view class='fightView column start' hidden='{{fightView.ishide}}'>
+    <!--用户区域-->
+    <view class='fightViewUser column' animation='{{matchViewBox.fightViewUserAni}}'>
+        <image src='{{imagesBaseUrl}}game/cycd/new_move/fight/fightbg.png' style='width:691rpx;height:162rpx'></image>
+        <view class='fightViewLeft column end-Y'>
+            <view class='userArea column center-Y'>
+                <view class='avatar'>
+                    <image src='{{leftview.userinfo.avatar}}'></image>
+                </view>
+                <view class='userName ellipsis-3'>{{leftview.userinfo.name}}</view>
+            </view>
+            <view class='userScore column' animation='{{leftview.currScoreAni}}'>{{leftview.currScore}}</view>
+            <view class='addScore column' animation='{{leftview.addScoreAni}}'>{{leftview.addScore}}</view>
+        </view>
+        <view class='fightViewRight column start'>
+            <view class='userArea column center-Y'>
+                <view class='avatar'>
+                    <image src='{{rightview.userinfo.avatar}}'></image>
+                </view>
+                <view class='userName ellipsis-3'>{{rightview.userinfo.name}}</view>
+            </view>
+            <view class='userScore column' animation='{{rightview.currScoreAni}}'>{{rightview.currScore}}</view>
+            <view class='addScore column' animation='{{rightview.addScoreAni}}'>{{rightview.addScore}}</view>
+        </view>
+    </view>
+
+    <!--表情-->
+    <image hidden='true' src='{{imagesBaseUrl}}game/cycd/new_move/fight/biaoqing.png' style='width:120rpx; height: 93rpx; position: absolute; left: 130rpx; top: 156rpx;'></image>
+
+    <!--时间区域-->
+    <view class='vsViewTime' hidden='{{fightView.vsViewTimeHide}}'>
+        <view class='vsViewTimeBar'>
+            <view style='margin-left:{{fightView.timeWidth}}%'></view>
+        </view>
+        <view class='timeProcess'>
+            <text>{{fightView.timeLimit}}</text>秒进入下一题
+        </view>
+        
+    </view>
+    
+
+    <!--问题区域-->
+    <view class='questionView' animation='{{fightView.questionAni}}'>
+        <image class='answer_sijiti' hidden='{{fightView.dijitiHide}}' src='{{imagesBaseUrl}}game/cycd/fight/{{fightView.dijitiPic}}.png'></image>
+        <view class='tips' hidden='{{fightView.vsTipsHide}}'>
+            <view class='tipsText' animation='{{fightView.topicAni}}'>
+              {{question.tips.order}} “{{question.tips.text}}”
+            </view>
+            <view class='tipsContent'>{{question.tips.content}}{{question.new_tips}}</view>
+        </view>
+        <view class='vsViewQuestion wrap row center-X center-Y' hidden='{{fightView.vsViewQuestion}}'>
+            <block wx:for="{{question.phrase}}" wx:key="">
+                <view class='questionItem column center-Y'>
+                     <image src='{{imagesBaseUrl}}game/cycd/new_move/fight/question_bg.png'></image> 
+               <view class='questText'>{{item.icon == 'true'?'':item.text}}</view> 
+                    <view class='wenhao' hidden="{{item.icon != 'true'}}">
+         <image src='{{imagesBaseUrl}}game/cycd/new_move/fight/wenhao.png' style='width:51rpx;height:70rpx;'></image>
+                    </view>
+                </view>
+            </block>
+        </view>
+
+        <!--答案区域-->
+        <view class='vsViewAnswer wrap row center-X center-Y' hidden='{{fightView.vsViewAnswerHide}}'>
+            <block wx:for="{{question.answer}}" wx:key="">
+                <view class='answerItem column center-Y' catchtouchstart='click_answer_text' data-index='{{index}}'>
+                    <image src='{{imagesBaseUrl}}game/cycd/new_move/fight/answer_{{item.bg}}.png'></image>
+                    <view class='answerText'>{{item.text}}</view>
+                    <view class='answerIcon' hidden='{{item.showicon == "false"}}'>
+                        <image src='{{imagesBaseUrl}}game/cycd/new_move/fight/{{item.icon}}.png'></image>
+                    </view>
+                </view>
+            </block>
+        </view>
+    </view>
+</view>
