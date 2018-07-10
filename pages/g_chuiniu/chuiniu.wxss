@@ -54,7 +54,7 @@ view{ box-sizing: border-box;}
 .icon-list .tips image{width:100%; height: 100%;}
 
 .fight-timer{position: fixed; width:200rpx; height: 200rpx; left:calc((100% - 200rpx)/2); top:356rpx; z-index: 99;}
-.fight-timer-num{position: absolute; top: 0; left: -6rpx; width: 100%; height: 100%;  font-size: 130rpx; color: #fff; padding-top: 20rpx; text-align: center}
+.fight-timer-num{position: absolute; top: 0; left: -6rpx; width: 100%; height: 100%;  font-size: 130rpx; color: #fff; padding-top: 25rpx; text-align: center}
 .fight-timer-num text{text-shadow: 8rpx 0 20rpx #000;}
 
 .fight-click-numlist{
@@ -67,9 +67,10 @@ view{ box-sizing: border-box;}
 .fight-click-numlist .list view{width:104rpx; height: 104rpx; background-size:100%; margin-right: 26rpx; position: relative;}
 .fight-click-numlist .list view:last-child{margin:0;}
 .fight-click-numlist .list:last-child{margin-top:6rpx;}
-
-.fight-click-numlist .numbg{position: absolute; z-index: 1;}
-.fight-click-numlist .numtext{position: absolute; z-index: 2;}
+.fight-click-numlist image{position: absolute;}
+.fight-click-numlist .numbg{z-index: 1;}
+.fight-click-numlist .numtext{z-index: 2;}
+.fight-click-numlist .locked{z-index: 3;}
 
 .fight-click-numlist2{
 	position: absolute; width:100%; bottom: 250rpx;

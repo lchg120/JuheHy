@@ -3,26 +3,18 @@ module.exports = function (t) {
 	return {
 		keep_shake: null,
 		end_shake: null,
+
+		//初始化
 		init: function () {
 
 		},
+
+		//点击开始
 		ready: function () {
 			t.setData({ 'user.hide': false, 'ready.tipsHide': true, 'ready.bgHide': false });
-			const e = tween.fastGet("readyView");
-			e.wait(500), e.call(function () {
-				t.setData({
-					'ready.bgimgHide': false
-				});
-			}),
-			e.wait(1500), e.call(function () {
-				t.setData({
-					'ready.bgHide': true
-					// 'user.hide': false,
-					// 'user.left.dialogHide': true,
-					// 'user.right.dialogHide': true
-				});
-			});
 		},
+
+		//摇骰子
 		shake: function () {
 			var _this = this;
 			_this.keep_shake = true;
@@ -75,6 +67,16 @@ module.exports = function (t) {
 
 		//显示消息： left为自己，right为对手。发送完毕后隐藏点击按钮。骰子，个数
 		showMsg: function (who, item, total) {
+			var clickNumlist = t.data.fight.clickNumlist, clickNumlist2 = t.data.fight.clickNumlist2;
+
+			//将数量组设置为锁住，去除点击状态
+			clickNumlist.map(function (val) {
+				if (val.id == total) val.clicked = false, val.locked = true; return val;
+			});
+			//将骰子组去除点击状态
+			clickNumlist2.map(function (val) {
+				val.clicked = false; return val;
+			});
 			if (who == 'left') {
 				t.setData({
 					'user.left.dialogHide': false,
@@ -85,8 +87,20 @@ module.exports = function (t) {
 					'fight.clickNumlistHide': true,
 					'fight.clickNumlist2Hide': true,
 					'fight.kaiGenHide': true,
+					'fight.clickNumlist': clickNumlist,
+					'fight.clickNumlist2': clickNumlist2,
 				});
+
+				//测试用： 设置demo数据
+				var ts = this;
+				setTimeout(function(){
+					var tmp = t.data.user.left.dialogData;
+					tmp.total += 1;
+					ts.showMsg('right', tmp.item, tmp.total)
+				}, 1000);
 			} else {
+				//判断是否可以跟
+				var leftDialogData = t.data.user.left.dialogData;
 				t.setData({
 					'user.right.dialogHide': false,
 					'user.left.dialogHide': true,
@@ -96,14 +110,46 @@ module.exports = function (t) {
 					'fight.clickNumlistHide': false,
 					'fight.clickNumlist2Hide': false,
 					'fight.kaiGenHide': false,
+					'fight.clickNumlist': clickNumlist,
+					'fight.btn.kai': false,
+					'fight.btn.kaiAct': true,
+					'fight.btn.gen': leftDialogData.total >= 10,
+					'fight.btn.genAct': leftDialogData.total < 10
 				});
 			}
 		},
 
-		//加载游戏后，初始化显示出牌方
+		//加载游戏后，初始化显示出牌方,left为自己，right为对手
 		when_gameStart: function(who){
-			this.share_end();
-			
-		} 
+			this.share_end();	//停止摇动
+			if(who == 'left'){
+				t.setData({
+					'fight.roundYou': false,
+					'fight.roundSelf': true,
+					'fight.clickNumlistHide': false,
+					'fight.clickNumlist2Hide': false,
+					'fight.kaiGenHide': false,
+				});
+			}else{
+				t.setData({
+					'fight.roundYou': true,
+					'fight.roundSelf': false,
+					'fight.clickNumlistHide': true,
+					'fight.clickNumlist2Hide': true,
+					'fight.kaiGenHide': true,
+				});
+			}	
+		},
+		showResult: function(){
+			t.setData({
+				'fight.hide': false,
+				'fight.clickNumlistHide': true,
+				'fight.clickNumlist2Hide': true,
+				'fight.kaiGenHide': true,
+				'fight.timerHide': true,
+				'result.hide': false,
+				'result.handshareHide': false
+			});
+		}
 	}
 }
