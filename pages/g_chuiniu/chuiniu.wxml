@@ -24,12 +24,14 @@
 	<view class='ready-tips' bindtap='startReadAni' hidden='{{ready.tipsHide}}'>
 		<image src='{{imagesBaseUrl}}game/g_chuiniu/help.png'></image>
 	</view>
-	<view class='ready-body' bindtap='click_start' animation='{{ready.shakeAni}}'>
+	<view class='ready-body' animation='{{ready.shakeAni}}'>
 		<image src='{{imagesBaseUrl}}game/g_chuiniu/shaigu.png' class='imgsize'></image>
 	</view>
 </view>
+
 <!--对战层-->
 <view class='fight-view bg' hidden='{{fight.hide}}' style="background-image: url('{{imagesBaseUrl}}game/g_chuiniu/gamebg.jpg')">
+	<!--5个骰子图标-->
 	<view class='icon-list'>
 	 	<block wx:for="{{fight.numList}}" wx:for-index="i" wx:key="">
 		<view class='icon{{i+1}}'><image src='{{imagesBaseUrl}}game/g_chuiniu/dice1_{{item}}.png'></image></view>
@@ -39,13 +41,14 @@
 			<image src='{{imagesBaseUrl}}game/g_chuiniu/selfround.png' hidden='{{!fight.roundSelf}}'></image>
 		</view>
 	</view>
+	<!--倒计时-->
 	<view class='fight-timer' hidden='{{fight.timerHide}}'>
-		<view class='fight-timerbox bg' style="background-image: url('{{imagesBaseUrl}}game/g_chuiniu/timeoutbg.png')">
-			<view class='fight-timer-num'>
-				<text>{{fight.timer}}</text>
-			</view>
+		<image src='{{imagesBaseUrl}}game/g_chuiniu/timeoutbg.png' class='imgsize'></image>
+		<view class='fight-timer-num'>
+			<text>{{fight.timer}}</text>
 		</view>
 	</view>
+	<!--数量按钮-->
 	<view class='fight-click-numlist' hidden='{{fight.clickNumlistHide}}'>
 		<view class='list'>
 			<block wx:for="{{fight.clickNumlist}}" wx:for-index="i" wx:if="{{i <= 4}}" wx:key="">
@@ -68,6 +71,7 @@
 			</block>
 		</view>
 	</view>
+	<!--骰子按钮-->
 	<view class='fight-click-numlist2' hidden='{{fight.clickNumlist2Hide}}'>
 		<block wx:for="{{fight.clickNumlist2}}" wx:for-index="i" wx:key="">
 		<view class='click-num' bindtap='click_numlist2' data-index="{{i}}">
@@ -76,6 +80,7 @@
 		</view>
 		</block>
 	</view>
+	<!--开跟按钮-->
 	<view class='fight-click-btn' hidden='{{fight.kaiGenHide}}'>
 		<view class='btn-kai' bindtap='click_kai'>
 			<image src='{{imagesBaseUrl}}game/g_chuiniu/btnKai.png'class='imgsize' hidden='{{!fight.btn.kai}}'></image>
@@ -86,6 +91,7 @@
 			<image src='{{imagesBaseUrl}}game/g_chuiniu/btnGen_act.png' class='imgsize' hidden='{{!fight.btn.genAct}}'></image>
 		</view>
 	</view>
+	<!--显示结果骰子-->
 	<view class='fight-handshare' hidden='{{fight.handshareHide}}'>
 		<view class='iconlist'>
 			<view class='icon1'><image src='{{imagesBaseUrl}}game/g_chuiniu/dice1_1.png' class='imgsize'></image></view>
@@ -127,8 +133,6 @@
 		</view>
 	</view>
 </view>
-
-
 
 <!--匹配到对手-->
 <view class='column start w100 h100 matchViewBox' hidden='{{matchViewBox.isHide}}'>

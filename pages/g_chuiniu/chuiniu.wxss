@@ -1,4 +1,5 @@
 .imgsize{width: 100%; height: 100%;}
+view{ box-sizing: border-box;}
 .vsuser-view{
 	position: relative; left: 0;right:0;top:0; bottom: 0; z-index: 99999; width: 100%; height: 236rpx;
 	display: flex; flex-flow:row nowrap;
@@ -15,21 +16,6 @@
 .vsuser-view .diolog image{width:40rpx; height: 40rpx;}
 .vsuser-view .diolog text{margin-right: 10rpx}
 .vsuser-view .right .diolog{right:0}
-
-.welcome-view{
-	width: 100%; height: 100%;
-	position: absolute; top: 0; left: 0; right:0; bottom: 0;
-	background-size:100%;
-	background-repeat: no-repeat;
-	background-position: center center;
-	display: flex; flex-flow:column wrap; justify-content:center; align-items:center; align-content:center;
-}
-.welcome-logo{width:624rpx; height: 410rpx; position: absolute; top: 0;}
-.welcome-icon{position: relative; width:400rpx; height: 360rpx;}
-.v-icon-1{width:98rpx; height: 84rpx; position: absolute; left: 220rpx; top: 0rpx;}
-.v-icon-2{width:185rpx; height: 161rpx; position: absolute; left: 0; top:30rpx}
-.v-icon-3{width:272rpx; height: 231rpx;position: absolute; left: 130rpx; top:100rpx}
-.welcome-playbtn{width: 709rpx; height: 319rpx; position: absolute; bottom: 100rpx;}
 
 .ready-view{
 	width:100%; height: 100%; position:fixed; left: 0; top:0; right:0; bottom:0;
@@ -48,24 +34,8 @@
 }
 .ready-tips image{width:609rpx; height: 500rpx;}
 
-.ready-readybg{
-	position: absolute; left: 0;top: 0; z-index:9; width:100%; height: 100%;
-	display: flex;
-	justify-content:center;
-	align-items:center;
-	align-content:center;
-	background: rgba(0,0,0,.5)
-}
-.ready-readybg image{width:720rpx; height: 110rpx;}
-.ready-anition{
-	position: absolute; left: 0 ;top: 0; z-index:10; width:100%; height: 100%;
-	display: flex; flex-flow:row wrap; justify-content:center; align-items:center; align-content:center;
-}
-.ready-readyimg{width:308rpx; height: 213rpx;}
-.ready-goimg{width:229rpx; height: 158rpx;}
-
 .fight-view{
-	position: absolute; left: 0 ;top: 0; width:100%; height:100%;
+	position: fixed; left: 0 ;top: 0; width:100%; height:100%;
 	background-size: 100%; background-repeat: no-repeat; background-position: bottom center;
 	display: flex; flex-flow:row wrap; justify-content:center; align-items:flex-start; align-content:center;
 	overflow: hidden;
@@ -83,13 +53,8 @@
 .icon-list .tips{width:360rpx; height: 69rpx; position: absolute; z-index: 9; top: 202rpx;}
 .icon-list .tips image{width:100%; height: 100%;}
 
-.fight-timer{position: absolute; width:200rpx; height: 200px; top:356rpx;}
-.fight-timerbox{
-	position: relative; width:100%; height: 100%;
-	background-size: 100%; background-repeat: no-repeat;
-	text-align: center
-}
-.fight-timer-num{font-size: 130rpx; color: #fff; padding-top: 10rpx;}
+.fight-timer{position: fixed; width:200rpx; height: 200rpx; left:calc((100% - 200rpx)/2); top:356rpx; z-index: 99;}
+.fight-timer-num{position: absolute; top: 0; left: -6rpx; width: 100%; height: 100%;  font-size: 130rpx; color: #fff; padding-top: 20rpx; text-align: center}
 .fight-timer-num text{text-shadow: 8rpx 0 20rpx #000;}
 
 .fight-click-numlist{
