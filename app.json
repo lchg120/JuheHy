@@ -27,5 +27,5 @@
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": false
   },
-  "entryPagePath": "pages/g_chuiniu/chuiniu"
+  "entryPagePath": "pages/start/start"
 }
