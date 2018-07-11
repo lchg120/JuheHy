@@ -6,7 +6,7 @@ module.exports = function (t) {
 
 		//初始化
 		init: function () {
-
+			
 		},
 
 		//点击开始
@@ -67,11 +67,12 @@ module.exports = function (t) {
 
 		//显示消息： left为自己，right为对手。发送完毕后隐藏点击按钮。骰子，个数
 		showMsg: function (who, item, total) {
+			item = parseInt(item), total = parseInt(total);
 			var clickNumlist = t.data.fight.clickNumlist, clickNumlist2 = t.data.fight.clickNumlist2;
 
 			//将数量组设置为锁住，去除点击状态
 			clickNumlist.map(function (val) {
-				if (val.id == total) val.clicked = false, val.locked = true; return val;
+				if (val.id == 1 || val.id == total) val.clicked = false, val.locked = true; return val;
 			});
 			//将骰子组去除点击状态
 			clickNumlist2.map(function (val) {
@@ -90,7 +91,7 @@ module.exports = function (t) {
 					'fight.clickNumlist': clickNumlist,
 					'fight.clickNumlist2': clickNumlist2,
 				});
-
+				/*
 				//测试用： 设置demo数据
 				var ts = this;
 				setTimeout(function(){
@@ -98,6 +99,7 @@ module.exports = function (t) {
 					tmp.total += 1;
 					ts.showMsg('right', tmp.item, tmp.total)
 				}, 1000);
+				*/
 			} else {
 				//判断是否可以跟
 				var leftDialogData = t.data.user.left.dialogData;
@@ -111,6 +113,7 @@ module.exports = function (t) {
 					'fight.clickNumlist2Hide': false,
 					'fight.kaiGenHide': false,
 					'fight.clickNumlist': clickNumlist,
+					'fight.clickNumlist2': clickNumlist2,
 					'fight.btn.kai': false,
 					'fight.btn.kaiAct': true,
 					'fight.btn.gen': leftDialogData.total >= 10,
@@ -140,13 +143,17 @@ module.exports = function (t) {
 				});
 			}	
 		},
-		showResult: function(){
+
+		//显示结果层，是否赢，骰子，总数
+		showResult: function(iswin, item, total){
 			t.setData({
 				'fight.hide': false,
 				'fight.clickNumlistHide': true,
 				'fight.clickNumlist2Hide': true,
 				'fight.kaiGenHide': true,
 				'fight.timerHide': true,
+				'result.iswin': iswin,
+				'result.data': { item:item, total: total},
 				'result.hide': false,
 				'result.handshareHide': false
 			});
